@@ -1,24 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" app clipped>
-      <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Settings</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      <meu-menu :nodes="nodes"></meu-menu>
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left>
@@ -62,6 +45,238 @@
       <span>&copy; 2019</span>
     </v-footer>
 
+    <v-navigation-drawer
+      v-model="drawerRight"
+      fixed
+      temporary
+      right
+      width="800"
+    >  
+      <template>
+        <v-tabs
+          v-model="tab"
+          fixed-tabs
+          background-color="indigo"
+        >
+          <v-tabs-slider></v-tabs-slider>
+          <v-tab href="#tab-1">
+            Dados do chamado
+          </v-tab>
+          <v-tab href="#tab-2">
+            Interações
+          </v-tab>          
+        </v-tabs>
+
+        <v-tabs-items v-model="tab">
+          <v-tab-item
+            key="1"
+            value="tab-1"
+          >
+            
+          </v-tab-item>
+
+          <v-tab-item
+            key="2"
+            value="tab-2"
+          >
+            <div class="d-flex flex-row-reverse">
+              <v-card
+                max-width="500"
+                :elevation="24"
+                :shaped="true"
+                style="margin-top:20px; margin-right: 10px;"
+              >
+                <v-card-title>
+                  <v-icon
+                    left
+                  >
+                    mdi-twitter
+                  </v-icon>
+                  <span class="title font-weight-light">LWM</span>
+                </v-card-title>
+
+                <v-card-text>
+                  "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-list-item class="grow">
+                    <v-list-item-avatar color="grey darken-3">
+                      <v-img
+                        class="elevation-6"
+                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+                      ></v-img>
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                      <v-list-item-title>Kaique Albuquerque</v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-row
+                      align="center"
+                      justify="end"
+                    >
+                      <v-btn icon>
+                        <v-icon class="mr-1">edit</v-icon>
+                      </v-btn>
+                      <v-btn icon>
+                        <v-icon class="mr-1">delete</v-icon>
+                      </v-btn>
+                    </v-row>
+                  </v-list-item>
+                </v-card-actions>
+              </v-card>
+            </div>
+            <div>
+              <v-card
+                max-width="500"
+                :elevation="24"
+                :shaped="true"
+                style="margin-top:20px; margin-left: 10px;"
+              >
+                <v-card-title>
+                  <v-icon
+                    left
+                  >
+                    mdi-twitter
+                  </v-icon>
+                  <span class="title font-weight-light">LWM</span>
+                </v-card-title>
+
+                <v-card-text>
+                  "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-list-item class="grow">
+                    <v-list-item-avatar color="grey darken-3">
+                      <v-img
+                        class="elevation-6"
+                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+                      ></v-img>
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                      <v-list-item-title>Kaique Albuquerque</v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-row
+                      align="center"
+                      justify="end"
+                    >
+                      <v-btn icon>
+                        <v-icon class="mr-1">edit</v-icon>
+                      </v-btn>
+                      <v-btn icon>
+                        <v-icon class="mr-1">delete</v-icon>
+                      </v-btn>
+                    </v-row>
+                  </v-list-item>
+                </v-card-actions>
+              </v-card>
+            </div>
+            <div class="d-flex flex-row-reverse">
+              <v-card
+                max-width="500"
+                :elevation="24"
+                :shaped="true"
+                style="margin-top:20px; margin-right: 10px;"
+              >
+                <v-card-title>
+                  <v-icon
+                    left
+                  >
+                    mdi-twitter
+                  </v-icon>
+                  <span class="title font-weight-light">LWM</span>
+                </v-card-title>
+
+                <v-card-text>
+                  "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-list-item class="grow">
+                    <v-list-item-avatar color="grey darken-3">
+                      <v-img
+                        class="elevation-6"
+                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+                      ></v-img>
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                      <v-list-item-title>Kaique Albuquerque</v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-row
+                      align="center"
+                      justify="end"
+                    >
+                      <v-btn icon>
+                        <v-icon class="mr-1">edit</v-icon>
+                      </v-btn>
+                      <v-btn icon>
+                        <v-icon class="mr-1">delete</v-icon>
+                      </v-btn>
+                    </v-row>
+                  </v-list-item>
+                </v-card-actions>
+              </v-card>
+            </div>
+            <div class="d-flex flex-row-reverse">
+              <v-card
+                max-width="500"
+                :elevation="24"
+                :shaped="true"
+                style="margin-top:20px; margin-right: 10px; margin-bottom: 10px;"
+              >
+                <v-card-title>
+                  <v-icon
+                    left
+                  >
+                    mdi-twitter
+                  </v-icon>
+                  <span class="title font-weight-light">LWM</span>
+                </v-card-title>
+
+                <v-card-text>
+                  "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-list-item class="grow">
+                    <v-list-item-avatar color="grey darken-3">
+                      <v-img
+                        class="elevation-6"
+                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+                      ></v-img>
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                      <v-list-item-title>Kaique Albuquerque</v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-row
+                      align="center"
+                      justify="end"
+                    >
+                      <v-btn icon>
+                        <v-icon class="mr-1">edit</v-icon>
+                      </v-btn>
+                      <v-btn icon>
+                        <v-icon class="mr-1">delete</v-icon>
+                      </v-btn>
+                    </v-row>
+                  </v-list-item>
+                </v-card-actions>
+              </v-card>
+            </div>
+          </v-tab-item>
+
+        </v-tabs-items>
+      </template>            
+    </v-navigation-drawer>
+
     <v-dialog v-model="fullDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
         <v-toolbar dark color="primary">
@@ -71,7 +286,7 @@
           <v-toolbar-title>Novo Chamado</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark text @click="fullDialog = false">Save</v-btn>
+            <v-btn dark text @click="fullDialog = false">Salvar</v-btn>
           </v-toolbar-items>
         </v-toolbar>
 
@@ -115,52 +330,150 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="dialog" max-width="500px">
-      <v-card>
-        <v-card-title>
-          <span class="headline">{{ formTitle }}</span>
-        </v-card-title>
-
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="editedItem.name" label="Dessert name"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="editedItem.calories" label="Calories"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="editedItem.fat" label="Fat (g)"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="editedItem.carbs" label="Carbs (g)"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="editedItem.protein" label="Protein (g)"></v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-          <v-btn color="blue darken-1" text @click="save">Save</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </v-app>
 </template>
 
 <script>
+
+import Menu from '../src/components/Menu';
+
 export default {
+  components: {
+    'meu-menu': Menu
+  },
+
   props: {
     source: String
   },
   data: () => ({
+    tab: null,
+
+    snack: false,
+    snackColor: '',
+    snackText: '',
+    headers2: [
+      { text: 'Data', sortable: false, value: 'data' },
+      { text: 'Interação', sortable: false,  value: 'interacao' },
+    ],
+    desserts2: [
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },  
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },  
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },  
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },  
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },  
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },  
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },  
+      {
+        data: 'Frozen Yogurt',
+        interacao: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      },        
+    ],
+    
+    nodes: [
+      {
+        icon: "mdi-home",
+        text: "Home",
+        children: []
+      },
+      {
+        icon: "attach_money",
+        text: "Financeiro",
+        children: [
+          {
+            icon: "call_received",
+            text: "Contas a pagar",
+            children: [
+              {
+                icon: "bar_chart",
+                text: "Centro de custos",
+                children: []
+              },
+              {
+                icon: "timeline",
+                text: "Para receber",
+                children: []
+              }
+            ]
+          },
+          {
+            icon: "call_made",
+            text: "Contas a receber",
+            children: [
+              {
+                icon: "bar_chart",
+                text: "Centro de lucros",
+                children: []
+              },
+              {
+                icon: "timeline",
+                text: "Para pagar",
+                children: []
+              }
+            ]
+          },
+        ]
+      },
+      {
+        icon: "phone",
+        text: "Atendimento",
+        children: [
+          {
+            icon: "assessment",
+            text: "Gerenciar atendimentos",
+            children: []
+          },
+          {
+            icon: "add",
+            text: "Novo atendimento",
+            children: []
+          }
+        ]
+      },
+      {
+        icon: "business_center",
+        text: "Vendas",
+        children: [
+          {
+            icon: "assessment",
+            text: "Gerenciar vendas",
+            children: []
+          },
+          {
+            icon: "add",
+            text: "Nova venda",
+            children: []
+          }
+        ]
+      }
+    ],
     e6: 1,
     drawer: null,
+    drawerRight: null,
     dialog: false,
     fullDialog: false,
     notifications: false,
@@ -208,9 +521,11 @@ export default {
       val || this.close();
     }
   },
+
   created() {
     (this.$vuetify.theme.dark = true), this.initialize();
   },
+
   methods: {
     initialize() {
       this.desserts = [
@@ -290,7 +605,7 @@ export default {
     editItem(item) {
       this.editedIndex = this.desserts.indexOf(item);
       this.editedItem = Object.assign({}, item);
-      this.dialog = true;
+      this.drawerRight = !this.drawerRight;
     },
 
     deleteItem(item) {
@@ -300,7 +615,7 @@ export default {
     },
 
     close() {
-      this.dialog = false;
+      this.drawerRight = false;
       setTimeout(() => {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
@@ -314,7 +629,21 @@ export default {
         this.desserts.push(this.editedItem);
       }
       this.close();
-    }
+    },
+
+    save2 () {
+      this.snack = true
+      this.snackColor = 'success'
+      this.snackText = 'Data saved'
+    },
+    cancel2 () {
+      this.snack = true
+      this.snackColor = 'error'
+      this.snackText = 'Canceled'
+    },
+    close2 () {
+      console.log('Dialog closed')
+    },
   }
 };
 </script>
