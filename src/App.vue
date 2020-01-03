@@ -48,24 +48,25 @@
     <v-navigation-drawer
       v-model="drawerRight"
       fixed
-      temporary
       right
       width="800"
     >  
       <template>
-        <v-tabs
-          v-model="tab"
-          fixed-tabs
-          background-color="indigo"
-        >
-          <v-tabs-slider></v-tabs-slider>
-          <v-tab href="#tab-1">
-            Dados do chamado
-          </v-tab>
-          <v-tab href="#tab-2">
-            Interações
-          </v-tab>          
-        </v-tabs>
+        
+          <v-tabs
+            v-model="tab"
+            fixed-tabs
+            background-color="indigo"
+            color="white"
+          >
+            <v-tabs-slider></v-tabs-slider>
+            <v-tab href="#tab-1">
+              Dados do chamado
+            </v-tab>
+            <v-tab href="#tab-2">
+              Interações
+            </v-tab>          
+          </v-tabs>
 
         <v-tabs-items v-model="tab">
           <v-tab-item
@@ -96,7 +97,7 @@
                 </v-card-title>
 
                 <v-card-text>
-                  "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 </v-card-text>
 
                 <v-card-actions>
@@ -271,6 +272,11 @@
                 </v-card-actions>
               </v-card>
             </div>
+            <div class="text-right" style="margin-bottom:10px;">
+              <v-btn class="mx-2" fab dark color="indigo" @click="sheet = !sheet">
+                <v-icon dark>mdi-plus</v-icon>
+              </v-btn>
+            </div>            
           </v-tab-item>
 
         </v-tabs-items>
@@ -330,6 +336,23 @@
       </v-card>
     </v-dialog>
 
+    <template>
+      <div class="text-center">
+        <v-bottom-sheet v-model="sheet" persistent>
+          <v-sheet class="text-center" height="200px">
+            <v-btn
+              class="mt-6"
+              flat
+              color="error"
+              @click="sheet = !sheet"
+            >close</v-btn>
+            <div class="py-3">This is a bottom sheet using the persistent prop</div>
+          </v-sheet>
+        </v-bottom-sheet>
+      </div>
+    </template>
+
+
   </v-app>
 </template>
 
@@ -347,7 +370,7 @@ export default {
   },
   data: () => ({
     tab: null,
-
+    sheet: false,
     snack: false,
     snackColor: '',
     snackText: '',
