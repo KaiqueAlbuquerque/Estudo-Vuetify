@@ -51,15 +51,49 @@
       right
       width="800"
     >  
-      <template>
-        
+      <v-toolbar
+        color="indigo"
+        flat
+        dense
+      >
+        <v-tooltip left>
+            <template v-slot:activator="{ on }">
+                <v-btn icon @click.stop="drawerRight = !drawerRight">
+                  <v-icon v-on="on" v-animate-css.hover="'rubberBand'">mdi-keyboard-backspace</v-icon>
+                </v-btn>
+            </template>
+            <span>Voltar</span>
+        </v-tooltip>
+
+        <v-toolbar-title>Detalhes do chamado</v-toolbar-title>
+
+        <v-spacer></v-spacer>
+
+        <v-tooltip left>
+            <template v-slot:activator="{ on }">
+                <v-btn icon>
+                  <v-icon v-on="on" v-animate-css.hover="'rubberBand'">mdi-magnify</v-icon>
+                </v-btn>
+            </template>
+            <span>Procurar</span>
+        </v-tooltip>
+
+        <v-tooltip left>
+            <template v-slot:activator="{ on }">
+                <v-btn icon @click.stop="sheet = !sheet">
+                  <v-icon v-on="on" v-animate-css.hover="'rubberBand'">mdi-plus</v-icon>
+                </v-btn>
+            </template>
+            <span>Nova interação</span>
+        </v-tooltip>
+      
+        <template v-slot:extension>
           <v-tabs
             v-model="tab"
-            fixed-tabs
             background-color="indigo"
             color="white"
+            grow
           >
-            <v-tabs-slider></v-tabs-slider>
             <v-tab href="#tab-1">
               Dados do chamado
             </v-tab>
@@ -67,6 +101,9 @@
               Interações
             </v-tab>          
           </v-tabs>
+        </template>
+        
+        </v-toolbar>
 
         <v-tabs-items v-model="tab">
           <v-tab-item
@@ -117,7 +154,7 @@
                       align="center"
                       justify="end"
                     >
-                      <v-btn icon>
+                      <v-btn icon @click="sheet = !sheet">
                         <v-icon class="mr-1">edit</v-icon>
                       </v-btn>
                       <v-btn icon>
@@ -165,7 +202,7 @@
                       align="center"
                       justify="end"
                     >
-                      <v-btn icon>
+                      <v-btn icon @click="sheet = !sheet">
                         <v-icon class="mr-1">edit</v-icon>
                       </v-btn>
                       <v-btn icon>
@@ -213,7 +250,7 @@
                       align="center"
                       justify="end"
                     >
-                      <v-btn icon>
+                      <v-btn icon @click="sheet = !sheet">
                         <v-icon class="mr-1">edit</v-icon>
                       </v-btn>
                       <v-btn icon>
@@ -261,7 +298,7 @@
                       align="center"
                       justify="end"
                     >
-                      <v-btn icon>
+                      <v-btn icon @click="sheet = !sheet">
                         <v-icon class="mr-1">edit</v-icon>
                       </v-btn>
                       <v-btn icon>
@@ -272,15 +309,8 @@
                 </v-card-actions>
               </v-card>
             </div>
-            <div class="text-right" style="margin-bottom:10px;">
-              <v-btn class="mx-2" fab dark color="indigo" @click="sheet = !sheet">
-                <v-icon dark>mdi-plus</v-icon>
-              </v-btn>
-            </div>            
           </v-tab-item>
-
         </v-tabs-items>
-      </template>            
     </v-navigation-drawer>
 
     <v-dialog v-model="fullDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -340,19 +370,35 @@
       <div class="text-center">
         <v-bottom-sheet v-model="sheet" persistent>
           <v-sheet class="text-center" height="200px">
-            <v-btn
-              class="mt-6"
-              flat
-              color="error"
-              @click="sheet = !sheet"
-            >close</v-btn>
-            <div class="py-3">This is a bottom sheet using the persistent prop</div>
+            <v-container fluid>
+              <v-textarea
+                label="Informe a sua interação"
+                no-resize
+                rows="3"
+                :value="value"
+              ></v-textarea>
+            </v-container>
+            <div class="d-flex flex-row-reverse">
+              <v-btn
+                style="margin-left:10px;margin-right:10px"
+                class="mt-6"
+                flat
+                color="error"
+                @click="sheet = !sheet"
+                v-animate-css.hover="'jello'"
+              >cancelar</v-btn>
+              <v-btn
+                class="mt-6"
+                flat
+                color="info"
+                @click="sheet = !sheet"
+                v-animate-css.hover="'jello'"
+              >salvar</v-btn>
+            </div>
           </v-sheet>
         </v-bottom-sheet>
       </div>
     </template>
-
-
   </v-app>
 </template>
 
@@ -496,7 +542,7 @@ export default {
     ],
     e6: 1,
     drawer: null,
-    drawerRight: null,
+    drawerRight: false,
     dialog: false,
     fullDialog: false,
     notifications: false,
