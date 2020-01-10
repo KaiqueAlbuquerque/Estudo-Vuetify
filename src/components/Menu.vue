@@ -1,27 +1,27 @@
 <template>
     <v-list>
-        <template v-for='(node, i) in nodes'>
-            <v-list-group v-if='node.children && node.children.length' v-model='node.active' :key="i">
+        <template v-for='(menu, i) in menus'>
+            <v-list-group v-if='menu.children && menu.children.length' v-model='menu.active' :key="i">
                 <v-list-tile slot='activator' class="v-list-item__title">
                     <v-tooltip right>
                         <template v-slot:activator="{ on }">
-                            <v-icon v-on="on" class="mr-2" v-animate-css.hover="'rubberBand'" v-text="node.icon"></v-icon>
+                            <v-icon v-on="on" class="mr-2" v-animate-css.hover="'rubberBand'" v-text="menu.icon"></v-icon>
                         </template>
-                        <span>{{node.text}}</span>
+                        <span>{{menu.text}}</span>
                     </v-tooltip>
-                    <v-list-tile-title>{{node.text}}</v-list-tile-title>
+                    <v-list-tile-title>{{menu.text}}</v-list-tile-title>
                 </v-list-tile>
-                <node-list class='py-0 pl-6' :nodes='node.children'/>
+                <menu-list class='py-0 pl-6' :menus='menu.children'/>
             </v-list-group>            
             <v-list-item v-else :key="i" class="v-list-item--link">
                 <v-tooltip right>
                     <template v-slot:activator="{ on }">
-                        <v-icon v-on="on" class="mr-2" v-animate-css.hover="'rubberBand'" v-text="node.icon"></v-icon>
+                        <v-icon v-on="on" class="mr-2" v-animate-css.hover="'rubberBand'" v-text="menu.icon"></v-icon>
                     </template>
-                    <span>{{node.text}}</span>
+                    <span>{{menu.text}}</span>
                 </v-tooltip>
                 <v-list-item-content>
-                    <v-list-tile-title v-text="node.text"></v-list-tile-title>
+                    <v-list-tile-title v-text="menu.text"></v-list-tile-title>
                 </v-list-item-content>
             </v-list-item> 
         </template>
@@ -30,8 +30,8 @@
 
 <script>
 export default {
-    name: 'node-list',
-    props: ['nodes'],
+    name: 'menu-list',
+    props: ['menus'],
 }
 </script>
 
