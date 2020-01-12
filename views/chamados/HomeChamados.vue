@@ -98,6 +98,16 @@ export default {
 
   created() {
     this.initialize();
+    if(this.$route.path == "/chamados/novo"){
+      this.fullDialog = true;
+    }  
+  },
+
+  watch:{
+    '$route' (to){
+      if(to.path == "/chamados/novo")
+        this.fullDialog = true;
+    }
   },
 
   methods: {
@@ -186,6 +196,7 @@ export default {
 
     toogleFullDialog() {
       this.fullDialog = false;
+      this.$router.push({path: '/chamados/home'});
     },
 
     editItem(item) {

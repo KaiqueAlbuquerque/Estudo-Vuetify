@@ -6,14 +6,12 @@
             dense
             class="cabecalho"
         >
-            <v-tooltip left>
-            <template v-slot:activator="{ on }">
-                <v-btn icon @click.stop="$emit('DrawerRight')">
-                    <v-icon v-on="on" v-animate-css.hover="'rubberBand'">mdi-keyboard-backspace</v-icon>
-                </v-btn>
-            </template>
-            <span>Voltar</span>
-            </v-tooltip>
+            <sig-botaoTooltip :posicao="posicao" 
+                              :funcaoEmit="'DrawerRight'" 
+                              :animacao="'rubberBand'" 
+                              :icone="'mdi-keyboard-backspace'"
+                              :texto="'Voltar'">
+            </sig-botaoTooltip>
 
             <v-toolbar-title>Detalhes do chamado</v-toolbar-title>
 
@@ -247,9 +245,21 @@
 </template>
 
 <script>
+import BotaoTooltip from '../../src/components/BotaoTooltip';
+
 export default {    
+    components: {
+        "sig-botaoTooltip": BotaoTooltip
+    },
+    
     data: () => ({
         tab: null,
+        posicao: {
+            left: true,
+            right: false,
+            top: false,
+            bottom: false
+        }
     })
 }
 </script>

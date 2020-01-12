@@ -13,7 +13,7 @@
                 </v-list-tile>
                 <menu-list class='py-0 pl-6' :menus='menu.children'/>
             </v-list-group>            
-            <v-list-item v-else :key="i" class="v-list-item--link">
+            <v-list-item v-else :key="i" class="v-list-item--link" @click="$router.push({path: menu.name})">
                 <v-tooltip right>
                     <template v-slot:activator="{ on }">
                         <v-icon v-on="on" class="mr-2" v-animate-css.hover="'rubberBand'" v-text="menu.icon"></v-icon>

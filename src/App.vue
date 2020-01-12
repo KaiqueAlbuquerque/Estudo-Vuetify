@@ -10,7 +10,9 @@
     </v-app-bar>
 
     <v-content>
-      <router-view></router-view>
+      <transition name="pagina">
+        <router-view></router-view>
+      </transition>
     </v-content>
 
     <v-footer app>
@@ -33,7 +35,8 @@ export default {
       {
         icon: "mdi-home",
         text: "Home",
-        children: []
+        children: [],
+        name: "/chamados/home"
       },
       {
         icon: "attach_money",
@@ -46,12 +49,14 @@ export default {
               {
                 icon: "bar_chart",
                 text: "Centro de custos",
-                children: []
+                children: [],
+                name: "/financeiro/home"
               },
               {
                 icon: "timeline",
                 text: "Para receber",
-                children: []
+                children: [],
+                name: ""
               }
             ]
           },
@@ -62,12 +67,14 @@ export default {
               {
                 icon: "bar_chart",
                 text: "Centro de lucros",
-                children: []
+                children: [],
+                name: ""
               },
               {
                 icon: "timeline",
                 text: "Para pagar",
-                children: []
+                children: [],
+                name: ""
               }
             ]
           },
@@ -80,12 +87,14 @@ export default {
           {
             icon: "assessment",
             text: "Gerenciar atendimentos",
-            children: []
+            children: [],
+            name: "/chamados/home"
           },
           {
             icon: "add",
             text: "Novo atendimento",
-            children: []
+            children: [],
+            name: "/chamados/novo"
           }
         ]
       },
@@ -96,12 +105,14 @@ export default {
           {
             icon: "assessment",
             text: "Gerenciar vendas",
-            children: []
+            children: [],
+            name: ""
           },
           {
             icon: "add",
             text: "Nova venda",
-            children: []
+            children: [],
+            name: ""
           }
         ]
       }
@@ -114,3 +125,15 @@ export default {
   },
 };
 </script>
+
+<style>
+.pagina-enter, .pagina-leave-active{
+  opacity: 0;
+}
+.pagina-leave-active{
+  transition: opacity .2s;
+}
+.pagina-enter-active{
+  transition: opacity 2s;
+}
+</style>
