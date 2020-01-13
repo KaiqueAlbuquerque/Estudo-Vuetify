@@ -4,6 +4,8 @@ import vuetify from './plugins/vuetify';
 
 import VAnimateCss from 'v-animate-css';
 
+import { store } from './vuex';
+
 import VueRouter from 'vue-router';
 import { rotas } from './rotas';
 
@@ -19,5 +21,6 @@ const rota = new VueRouter({
 new Vue({
   vuetify,
   router: rota,
-  render: h => h(App)
+  render: h => h(App),
+  store
 }).$mount('#app')

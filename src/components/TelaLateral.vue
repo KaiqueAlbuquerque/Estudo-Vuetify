@@ -12,7 +12,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-    props: ['drawerRight'],
+    computed: {
+        ...mapState({
+            drawerRight: state => state.drawerRight
+        }),
+    },
 }
 </script>

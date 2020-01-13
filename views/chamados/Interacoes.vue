@@ -7,7 +7,7 @@
             class="cabecalho"
         >
             <sig-botaoTooltip :posicao="posicao" 
-                              :funcaoEmit="'DrawerRight'" 
+                              :click="toggleDrawerRight"
                               :animacao="'rubberBand'" 
                               :icone="'mdi-keyboard-backspace'"
                               :texto="'Voltar'">
@@ -17,24 +17,19 @@
 
             <v-spacer></v-spacer>
 
-            <v-tooltip left :key="i">
-                <template v-slot:activator="{ on }">
-                    <v-btn icon>
-                        <v-icon v-on="on" v-animate-css.hover="'rubberBand'">mdi-magnify</v-icon>
-                    </v-btn>
-                </template>
-                <span>Procurar</span>
-            </v-tooltip>
-
-            <v-tooltip left>
-                <template v-slot:activator="{ on }">
-                    <v-btn icon @click.stop="$emit('Sheet')">
-                    <v-icon v-on="on" v-animate-css.hover="'rubberBand'">mdi-plus</v-icon>
-                    </v-btn>
-                </template>
-                <span>Nova interação</span>
-            </v-tooltip>
+            <sig-botaoTooltip :posicao="posicao" 
+                              :animacao="'rubberBand'" 
+                              :icone="'mdi-magnify'"
+                              :texto="'Procurar'">
+            </sig-botaoTooltip>
         
+            <sig-botaoTooltip :posicao="posicao" 
+                              :click="toggleSheet"
+                              :animacao="'rubberBand'" 
+                              :icone="'mdi-plus'"
+                              :texto="'Nova interação'">
+            </sig-botaoTooltip>
+
             <template v-slot:extension>
                 <v-tabs
                     v-model="tab"
@@ -96,7 +91,7 @@
                                     align="center"
                                     justify="end"
                                 >
-                                    <v-btn icon @click="$emit('Sheet')">
+                                    <v-btn icon @click="toggleSheet">
                                         <v-icon class="mr-1">edit</v-icon>
                                     </v-btn>
                                     <v-btn icon>
@@ -140,7 +135,7 @@
                                     align="center"
                                     justify="end"
                                 >
-                                    <v-btn icon @click="$emit('Sheet')">
+                                    <v-btn icon @click="toggleSheet">
                                         <v-icon class="mr-1">edit</v-icon>
                                     </v-btn>
                                     <v-btn icon>
@@ -184,7 +179,7 @@
                                     align="center"
                                     justify="end"
                                 >
-                                    <v-btn icon @click="$emit('Sheet')">
+                                    <v-btn icon @click="toggleSheet">
                                         <v-icon class="mr-1">edit</v-icon>
                                     </v-btn>
                                     <v-btn icon>
@@ -228,7 +223,7 @@
                                     align="center"
                                     justify="end"
                                     >
-                                    <v-btn icon @click="$emit('Sheet')">
+                                    <v-btn icon @click="toggleSheet">
                                         <v-icon class="mr-1">edit</v-icon>
                                     </v-btn>
                                     <v-btn icon>
@@ -246,6 +241,7 @@
 
 <script>
 import BotaoTooltip from '../../src/components/BotaoTooltip';
+import { mapMutations } from 'vuex';
 
 export default {    
     components: {
@@ -260,7 +256,14 @@ export default {
             top: false,
             bottom: false
         }
-    })
+    }),
+
+    methods: {
+        ...mapMutations([
+            'toggleDrawerRight',
+            'toggleSheet'
+        ]),
+    }
 }
 </script>
 

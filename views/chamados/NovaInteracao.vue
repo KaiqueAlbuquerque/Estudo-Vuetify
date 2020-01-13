@@ -16,14 +16,14 @@
                     class="mt-6"
                     flat
                     color="error"
-                    @click="$emit('Sheet')"
+                    @click="toggleSheet"
                     v-animate-css.hover="'rubberBand'"
                 >cancelar</v-btn>
                 <v-btn
                     class="mt-6"
                     flat
                     color="info"
-                    @click="$emit('Sheet')"
+                    @click="toggleSheet"
                     v-animate-css.hover="'rubberBand'"
                 >salvar</v-btn>
             </div>
@@ -33,7 +33,19 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
-    props: ["sheet"]
+    computed: {
+        ...mapGetters([
+            'sheet'
+        ])
+    },
+    
+    methods: {
+        ...mapMutations([
+            'toggleSheet'
+        ]),
+    }
 }
 </script>

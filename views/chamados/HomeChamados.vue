@@ -29,21 +29,15 @@
       </v-row>
     </v-container>
 
-    <sig-tela-lateral :drawerRight="drawerRight">
-      <sig-interacoes
-        v-on:DrawerRight="toogleDrawerRight"
-        v-on:Sheet="toogleSheet"
-      ></sig-interacoes>
+    <sig-tela-lateral>
+      <sig-interacoes></sig-interacoes>
     </sig-tela-lateral>
 
     <sig-novo-chamado
       v-on:FullDialog="toogleFullDialog"
       :fullDialog="fullDialog"
     ></sig-novo-chamado>
-    <sig-nova-interacao
-      v-on:Sheet="toogleSheet"
-      :sheet="sheet"
-    ></sig-nova-interacao>
+    <sig-nova-interacao></sig-nova-interacao>
   </div>
 </template>
 
@@ -52,6 +46,8 @@ import TelaLateral from "../../src/components/TelaLateral";
 import Interacoes from "./Interacoes";
 import NovoChamado from "./NovoChamado";
 import NovaInteracao from "./NovaInteracao";
+
+import { mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -62,9 +58,7 @@ export default {
   },
 
   data: () => ({
-    sheet: false,
     fullDialog: false,
-    drawerRight: false,
     headers: [
       {
         text: "Dessert (100g serving)",
@@ -186,13 +180,10 @@ export default {
       ];
     },
 
-    toogleDrawerRight() {
-      this.drawerRight = !this.drawerRight;
-    },
-
-    toogleSheet() {
-      this.sheet = !this.sheet;
-    },
+    ...mapMutations([
+      'toggleDrawerRight',
+      'toggleSheet'
+    ]),
 
     toogleFullDialog() {
       this.fullDialog = false;
@@ -202,30 +193,13 @@ export default {
     editItem(item) {
       this.editedIndex = this.desserts.indexOf(item);
       this.editedItem = Object.assign({}, item);
-      this.drawerRight = !this.drawerRight;
+      this.toggleDrawerRight();
     },
 
     deleteItem(item) {
       const index = this.desserts.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.desserts.splice(index, 1);
-    },
-
-    close() {
-      this.drawerRight = false;
-      setTimeout(() => {
-        this.editedItem = Object.assign({}, this.defaultItem);
-        this.editedIndex = -1;
-      }, 300);
-    },
-
-    save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.editedItem);
-      } else {
-        this.desserts.push(this.editedItem);
-      }
-      this.close();
     },
   }
 };
