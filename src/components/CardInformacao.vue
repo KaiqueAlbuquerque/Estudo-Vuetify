@@ -1,27 +1,28 @@
 <template>
   <v-card
-    class="pa-7 mx-auto"
-    max-width="340"
-    height="150"
+    class="pa-6 mx-auto"
+    width="700"
     centered
     outlined
     :color="cor"
     raised
-    shaped
+    :shaped="shaped"
+    :elevation="12"
   >
-    <v-list-item three-line>
-      <v-list-item-content>
-        <v-list-item-title class="display-1 mb-1">{{titulo}}</v-list-item-title>
-        <v-list-item-subtitle class="subtitle-2 mb-8">{{subtitulo}}</v-list-item-subtitle>
-      </v-list-item-content>
-
-      <v-icon x-large dark>{{icone}}</v-icon>
-    </v-list-item>
+    <component v-bind:is="current" :titulo="titulo" :subtitulos="subtitulos" :icone="icone" :classeTexto="classeTexto" :classeSubtitulo="classeSubtitulo"></component>
   </v-card>
 </template>
 
 <script>
 export default {
-  props: ["cor", "titulo", "subtitulo", "icone"],
+  props: ["cor", "titulo", "subtitulos", "icone", "componentCurrent", "shaped", "classeTexto", "classeSubtitulo"],
+
+  data: () => ({
+    current: null
+  }),
+
+  created(){
+    this.current = this.componentCurrent
+  }
 }
 </script>
