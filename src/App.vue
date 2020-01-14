@@ -86,6 +86,12 @@ export default {
         children: [
           {
             icon: "assessment",
+            text: "Dashboard",
+            children: [],
+            name: "/chamados/dashboard"
+          },
+          {
+            icon: "mdi-ticket",
             text: "Gerenciar atendimentos",
             children: [],
             name: "/chamados/home"
