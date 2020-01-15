@@ -13,10 +13,10 @@
                 </v-col>
             </v-row>
             <v-row>   
-                <v-col md="6">             
+                <v-col md="12">             
                     <sig-card-informacao :cor="'white'" :componentCurrent="component1"></sig-card-informacao>
                 </v-col>
-                <v-col md="6">
+                <v-col md="12">
                     <sig-card-informacao :cor="'white'" :componentCurrent="component2"></sig-card-informacao>                
                 </v-col>
             </v-row>            

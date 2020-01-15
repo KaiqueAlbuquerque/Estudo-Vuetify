@@ -2,6 +2,25 @@
   <div>
     <v-container class="fill-height" fluid>
       <v-row align="center">
+        <v-col md="10">
+          <h1>Chamados</h1>
+        </v-col>
+        <v-col md="2">
+          <v-layout align-end justify-end>
+            <sig-botaoTooltip :posicao="posicao"
+                              :click="changeListTrue"
+                              :animacao="'rubberBand'" 
+                              :icone="'mdi-table'"
+                              :texto="'Tabela'">
+            </sig-botaoTooltip>
+            <sig-botaoTooltip :posicao="posicao"
+                              :click="changeListFalse"
+                              :animacao="'rubberBand'" 
+                              :icone="'mdi-crop-square'"
+                              :texto="'Card'">
+            </sig-botaoTooltip>
+          </v-layout>
+        </v-col>
         <v-col v-if="list == true">
           <v-data-table 
             :headers="headers"
@@ -9,28 +28,21 @@
             sort-by="calories"
             class="elevation-1"
           >
-            <template v-slot:top>
-              <v-toolbar flat>
-                <v-toolbar-title>Chamados</v-toolbar-title>
-                <v-divider class="mx-4" inset vertical></v-divider>
-                <v-spacer></v-spacer>
-
-                <v-btn color="primary" dark @click="fullDialog = true"
-                  >Novo chamado</v-btn
-                >
-              </v-toolbar>
-            </template>
             <template v-slot:item.action="{ item }">
               <v-icon small class="mr-2" @click="editItem(item)">edit</v-icon>
               <v-icon small @click="deleteItem(item)">delete</v-icon>
             </template>
           </v-data-table>          
         </v-col>
-        
         <v-col md="3" v-else v-for="dessert in desserts" :key="dessert.name">
-          <sig-card-informacao :titulo="'Nº Chamado: 53717'" :subtitulos="subtitulos" :componentCurrent="component" :classeTexto="'subtitle'"></sig-card-informacao>
+          <sig-card-informacao :titulo="'Nº Chamado: 53717'" :subtitulos="subtitulos" :componentCurrent="component" :classeTexto="'subtitle'" :temLogo="true"></sig-card-informacao>
         </v-col>
       </v-row>
+      <v-layout align-end justify-end>
+        <v-btn fixed bottom large fab dark color="indigo" @click="fullDialog = true">
+          <v-icon dark>mdi-plus</v-icon>
+        </v-btn>
+      </v-layout>
     </v-container>
 
     <sig-tela-lateral>
@@ -52,8 +64,9 @@ import NovoChamado from "./NovoChamado";
 import NovaInteracao from "./NovaInteracao";
 import CardInformacao from "../../src/components/CardInformacao";
 import TextoCard from '../../src/components/TextoCard';
+import BotaoTooltip from '../../src/components/BotaoTooltip';
 
-import { mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -61,10 +74,23 @@ export default {
     "sig-interacoes": Interacoes,
     "sig-novo-chamado": NovoChamado,
     "sig-nova-interacao": NovaInteracao,
-    "sig-card-informacao": CardInformacao   
+    "sig-card-informacao": CardInformacao,
+    "sig-botaoTooltip": BotaoTooltip   
+  },
+
+  computed: {
+    ...mapGetters([
+      'list'
+    ])
   },
 
   data: () => ({
+    posicao: {
+        left: false,
+        right: false,
+        top: false,
+        bottom: true
+    },
     subtitulos: [
       'Cliente: Cecil',
       'Autor: Kaique Albuquerque',
@@ -72,7 +98,6 @@ export default {
       'Prioridade: Alta'
     ],
     component: TextoCard,
-    list: false,
     fullDialog: false,
     headers: [
       {
@@ -197,7 +222,9 @@ export default {
 
     ...mapMutations([
       'toggleDrawerRight',
-      'toggleSheet'
+      'toggleSheet',
+      'changeListTrue',
+      'changeListFalse'
     ]),
 
     toogleFullDialog() {

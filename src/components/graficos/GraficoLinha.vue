@@ -21,8 +21,8 @@ export default {
         montaTela(){
             let graficoLinha = new Linha(
                             "Requisições",
-                            ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
-                            [5,6,7,8,9,100],
+                            ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+                            [5,6,7,8,9,100,5,6,7,8,9,100],
                             '#fff',
                             5,
                             '#b71c1c',

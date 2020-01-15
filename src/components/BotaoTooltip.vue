@@ -1,5 +1,5 @@
 <template>
-    <v-tooltip :left="posicao.left" :right="posicao.right" :top="posicao.top" :bottom="posicao.top">
+    <v-tooltip :left="posicao.left" :right="posicao.right" :top="posicao.top" :bottom="posicao.bottom">
         <template v-slot:activator="{ on }">
             <v-btn icon @click.stop="click">
                 <v-icon v-on="on" v-animate-css.hover="animacao">{{icone}}</v-icon>
