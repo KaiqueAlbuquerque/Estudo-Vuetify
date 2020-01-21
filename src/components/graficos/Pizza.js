@@ -1,17 +1,17 @@
-export default class Pizza{
-    constructor(textos, cores, dados){
+export default class Pizza {
+    constructor(textos, cores, dados) {
         this._textos = textos;
         this._cores = cores;
         this._dados = dados;
     }
 
-    geraGraficoPizza(){
+    geraGraficoPizza() {
         const grafico = {
             type: 'pie',
             data: {
                 labels: this._textos,
                 datasets: [
-                    { 
+                    {
                         backgroundColor: this._cores,
                         data: this._dados
                     },
@@ -20,8 +20,11 @@ export default class Pizza{
             options: {
                 responsive: true,
                 legend: {
-                    display: true
-                }
+                    display: true,
+                    labels: {
+                        fontColor: "white"
+                    }
+                },
             }
         }
 

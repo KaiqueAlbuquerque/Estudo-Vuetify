@@ -1,76 +1,83 @@
-export default class Linha{
+export default class Linha {
     constructor(
-                    textoLegendaBolinha,
-                    valoresEixoX, 
-                    valoresPlotar, 
-                    corDoPonto, 
-                    espessuraLinha, 
-                    corDaLinhaPonto, 
-                    tituloY, 
-                    tituloX, 
-                    retaEixoY,
-                    linhasFundo
-                ){
-        
-        this._textoLegendaBolinha = textoLegendaBolinha 
-        this._valoresEixoX =  valoresEixoX 
-        this._valoresPlotar =  valoresPlotar 
-        this._corDoPonto =  corDoPonto 
-        this._espessuraLinha =  espessuraLinha 
-        this._corDaLinhaPonto =  corDaLinhaPonto 
-        this._tituloY =  tituloY 
-        this._tituloX =  tituloX 
-        this._retaEixoY =  retaEixoY 
-        this._linhasFundo =  linhasFundo 
+        textoLegendaBolinha,
+        valoresEixoX,
+        valoresPlotar,
+        corDoPonto,
+        espessuraLinha,
+        corDaLinhaPonto,
+        tituloY,
+        tituloX,
+        retaEixoY,
+        linhasFundo
+    ) {
+
+        this._textoLegendaBolinha = textoLegendaBolinha
+        this._valoresEixoX = valoresEixoX
+        this._valoresPlotar = valoresPlotar
+        this._corDoPonto = corDoPonto
+        this._espessuraLinha = espessuraLinha
+        this._corDaLinhaPonto = corDaLinhaPonto
+        this._tituloY = tituloY
+        this._tituloX = tituloX
+        this._retaEixoY = retaEixoY
+        this._linhasFundo = linhasFundo
     }
 
-    geraGraficoLinha(){
+    geraGraficoLinha() {
         const grafico = {
             type: 'line',
             data: {
                 labels: this._valoresEixoX,
                 datasets: [
-                { 
-                    label: this._textoLegendaBolinha,
-                    fill: false,  
-                    lineTension: 0.7,
-                    pointBackgroundColor: this._corDoPonto,
-                    pointBorderWidth: 2,
-                    pointHoverBorderWidth: 3,
-                    pointRadius: 5,
-                    borderWidth: this._espessuraLinha,
-                    data: this._valoresPlotar,
-                    borderColor: this._corDaLinhaPonto
-                },
+                    {
+                        label: this._textoLegendaBolinha,
+                        fill: false,
+                        lineTension: 0.7,
+                        pointBackgroundColor: this._corDoPonto,
+                        pointBorderWidth: 2,
+                        pointHoverBorderWidth: 3,
+                        pointRadius: 5,
+                        borderWidth: this._espessuraLinha,
+                        data: this._valoresPlotar,
+                        borderColor: this._corDaLinhaPonto
+                    },
                 ]
             },
             options: {
                 responsive: true,
                 legend: {
-                display: false
+                    display: false,
                 },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero: true,
+                            fontColor: 'white'
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: this._tituloY
+                            labelString: this._tituloY,
+                            fontColor: 'white'
                         },
                         gridLines: {
                             drawBorder: this._retaEixoY,
+                            display: this._linhasFundo
                         },
                     }],
                     xAxes: [
                         {
                             scaleLabel: {
                                 display: true,
-                                labelString: this._tituloX
+                                labelString: this._tituloX,
+                                fontColor: 'white'
                             },
                             gridLines: {
                                 display: this._linhasFundo
-                            }
+                            },
+                            ticks: {
+                                fontColor: 'white'
+                            },
                         }
                     ]
                 }
