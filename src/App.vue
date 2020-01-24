@@ -22,12 +22,11 @@
 </template>
 
 <script>
-
-import Menu from '../src/components/Menu';
+import Menu from "../src/components/Menu";
 
 export default {
   components: {
-    'sig-menu': Menu
+    "sig-menu": Menu
   },
 
   data: () => ({
@@ -77,7 +76,7 @@ export default {
                 name: ""
               }
             ]
-          },
+          }
         ]
       },
       {
@@ -123,23 +122,24 @@ export default {
         ]
       }
     ],
-    drawer: null,
+    drawer: null
   }),
 
   created() {
-    this.$vuetify.theme.dark = true
-  },
+    this.$vuetify.theme.dark = true;
+  }
 };
 </script>
 
 <style>
-.pagina-enter, .pagina-leave-active{
+.pagina-enter,
+.pagina-leave-active {
   opacity: 0;
 }
-.pagina-leave-active{
-  transition: opacity .2s;
+.pagina-leave-active {
+  transition: opacity 0.2s;
 }
-.pagina-enter-active{
+.pagina-enter-active {
   transition: opacity 2s;
 }
 </style>

@@ -3,7 +3,10 @@
     <v-list-item-title :class="classeTexto" class="mb-1">{{
       titulo
     }}</v-list-item-title>
-    <canvas style="margin-top:25px" id="graficoPizza"></canvas>
+    <canvas
+      style="margin-top:25px; max-width:1027px"
+      id="graficoPizza"
+    ></canvas>
   </div>
 </template>
 
