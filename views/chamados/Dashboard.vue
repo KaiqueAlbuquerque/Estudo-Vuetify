@@ -83,9 +83,9 @@ export default {
     component1: GraficoLinha,
     component2: GraficoPizza,
     component3: GraficoBarra,
-    subtitulo1: ["5 Novos Chamados"],
-    subtitulo2: ["5 Chamados em Atendimento"],
-    subtitulo3: ["5 Chamados Finalizados"]
+    subtitulo1: ["1000"],
+    subtitulo2: ["1000"],
+    subtitulo3: ["1000"]
   })
 };
 </script>
