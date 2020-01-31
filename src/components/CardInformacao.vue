@@ -25,11 +25,40 @@
       :classeTexto="classeTexto"
       :classeSubtitulo="classeSubtitulo"
     ></component>
+    <v-layout
+      v-if="temCronometro == true"
+      align-end
+      justify-end
+      style="margin-top:15px;"
+    >
+      <sig-cronometro
+        starttime="Jan 31, 2020 15:55:25"
+        endtime="Jan 31, 2020 17:08:25"
+        trans='
+            {  
+              "day":"Dias",
+              "hours":"Horas",
+              "minutes":"Minutos",
+              "seconds":"Segundos",
+              "status": {
+                  "expired":"",
+                  "running":"",
+                  "upcoming":""
+              }
+           }'
+      ></sig-cronometro>
+    </v-layout>
   </v-card>
 </template>
 
 <script>
+import Cronometro from "../components/Cronometro";
+
 export default {
+  components: {
+    "sig-cronometro": Cronometro
+  },
+
   props: [
     "cor",
     "titulo",
@@ -39,7 +68,8 @@ export default {
     "shaped",
     "classeTexto",
     "classeSubtitulo",
-    "temLogo"
+    "temLogo",
+    "temCronometro"
   ],
 
   data: () => ({

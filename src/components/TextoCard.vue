@@ -1,20 +1,18 @@
 <template>
   <v-list-item three-line>
     <v-list-item-content>
-      <v-list-item-title :class="classeTexto" class="mb-1">{{
-        titulo
-      }}</v-list-item-title>
+      <div :class="classeTexto" class="mb-1">{{ titulo }}</div>
       <v-list-item-subtitle
         v-for="(subtitulo, index) in subtitulos"
         :key="index"
         :class="classeSubtitulo"
         class="subtitle-1"
       >
-        <template v-if="subtitulo == '1000'">
+        <template v-if="subtitulo.increment == true">
           <animated-number
-            :value="subtitulo"
+            :value="subtitulo.value"
             :formatValue="formatToPrice"
-            :duration="2000"
+            :duration="1000"
             round="1"
           />
         </template>
@@ -23,7 +21,6 @@
         </template>
       </v-list-item-subtitle>
     </v-list-item-content>
-
     <v-icon x-large dark>{{ icone }}</v-icon>
   </v-list-item>
 </template>
@@ -45,7 +42,7 @@ export default {
 
   methods: {
     formatToPrice(subtitulo) {
-      return `<h1>${subtitulo}</h1>`;
+      return `<div class="display-2">${subtitulo}</div>`;
     }
   }
 };

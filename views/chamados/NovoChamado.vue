@@ -1,5 +1,10 @@
 <template>
-  <v-dialog v-model="fullDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+  <v-dialog
+    v-model="fullDialog"
+    fullscreen
+    hide-overlay
+    transition="dialog-bottom-transition"
+  >
     <v-card>
       <v-toolbar dark color="primary">
         <v-btn icon dark @click="$emit('FullDialog')">
@@ -19,9 +24,20 @@
         </v-stepper-step>
         <v-stepper-content step="1">
           <v-form ref="form" v-model="valid" lazy-validation>
-            <v-text-field v-model="name" :counter="100" :rules="nameRules" label="Name" required></v-text-field>
+            <v-text-field
+              v-model="name"
+              :counter="100"
+              :rules="nameRules"
+              label="Name"
+              required
+            ></v-text-field>
 
-            <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="E-mail"
+              required
+            ></v-text-field>
 
             <v-select
               v-model="select"
@@ -41,11 +57,11 @@
           <v-btn color="primary" @click="e6 = 2">Continue</v-btn>
         </v-stepper-content>
 
-        <v-stepper-step :complete="e6 > 2" step="2">Iterações</v-stepper-step>
+        <v-stepper-step :complete="e6 > 2" step="2">Iteração</v-stepper-step>
 
         <v-stepper-content step="2">
           <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-          <v-btn color="primary" @click="e6 = 3">Continue</v-btn>
+          <v-btn color="primary" @click="abrirChamado">Continue</v-btn>
           <v-btn text @click="e6 = 1">Voltar</v-btn>
         </v-stepper-content>
       </v-stepper>
@@ -55,10 +71,17 @@
 
 <script>
 export default {
-    props: ["fullDialog"],
+  props: ["fullDialog"],
 
-    data: () => ({
-        e6: 1,
-    })
-}
+  data: () => ({
+    e6: 1
+  }),
+
+  methods: {
+    abrirChamado() {
+      this.e6 = 1;
+      this.$emit("FullDialog");
+    }
+  }
+};
 </script>

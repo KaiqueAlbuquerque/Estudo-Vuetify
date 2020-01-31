@@ -7,22 +7,26 @@
         </v-col>
         <v-col md="2">
           <v-layout align-end justify-end>
-            <sig-botaoTooltip :posicao="posicao"
-                              :click="changeListTrue"
-                              :animacao="'rubberBand'" 
-                              :icone="'mdi-table'"
-                              :texto="'Tabela'">
+            <sig-botaoTooltip
+              :posicao="posicao"
+              :click="changeListTrue"
+              :animacao="'rubberBand'"
+              :icone="'mdi-table'"
+              :texto="'Tabela'"
+            >
             </sig-botaoTooltip>
-            <sig-botaoTooltip :posicao="posicao"
-                              :click="changeListFalse"
-                              :animacao="'rubberBand'" 
-                              :icone="'mdi-crop-square'"
-                              :texto="'Card'">
+            <sig-botaoTooltip
+              :posicao="posicao"
+              :click="changeListFalse"
+              :animacao="'rubberBand'"
+              :icone="'mdi-crop-square'"
+              :texto="'Card'"
+            >
             </sig-botaoTooltip>
           </v-layout>
         </v-col>
         <v-col v-if="list == true">
-          <v-data-table 
+          <v-data-table
             :headers="headers"
             :items="desserts"
             sort-by="calories"
@@ -32,14 +36,29 @@
               <v-icon small class="mr-2" @click="editItem(item)">edit</v-icon>
               <v-icon small @click="deleteItem(item)">delete</v-icon>
             </template>
-          </v-data-table>          
+          </v-data-table>
         </v-col>
         <v-col md="3" v-else v-for="dessert in desserts" :key="dessert.name">
-          <sig-card-informacao :titulo="'Nº Chamado: 53717'" :subtitulos="subtitulos" :componentCurrent="component" :classeTexto="'subtitle'" :temLogo="true"></sig-card-informacao>
+          <sig-card-informacao
+            :titulo="'Nº Chamado: 53717'"
+            :subtitulos="subtitulos"
+            :componentCurrent="component"
+            :classeTexto="'subtitle'"
+            :temLogo="true"
+            :temCronometro="true"
+          ></sig-card-informacao>
         </v-col>
       </v-row>
       <v-layout align-end justify-end>
-        <v-btn fixed bottom large fab dark color="indigo" @click="fullDialog = true">
+        <v-btn
+          fixed
+          bottom
+          large
+          fab
+          dark
+          color="indigo"
+          @click="fullDialog = true"
+        >
           <v-icon dark>mdi-plus</v-icon>
         </v-btn>
       </v-layout>
@@ -63,10 +82,10 @@ import Interacoes from "./Interacoes";
 import NovoChamado from "./NovoChamado";
 import NovaInteracao from "./NovaInteracao";
 import CardInformacao from "../../src/components/CardInformacao";
-import TextoCard from '../../src/components/TextoCard';
-import BotaoTooltip from '../../src/components/BotaoTooltip';
+import TextoCard from "../../src/components/TextoCard";
+import BotaoTooltip from "../../src/components/BotaoTooltip";
 
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   components: {
@@ -75,27 +94,25 @@ export default {
     "sig-novo-chamado": NovoChamado,
     "sig-nova-interacao": NovaInteracao,
     "sig-card-informacao": CardInformacao,
-    "sig-botaoTooltip": BotaoTooltip   
+    "sig-botaoTooltip": BotaoTooltip
   },
 
   computed: {
-    ...mapGetters([
-      'list'
-    ])
+    ...mapGetters(["list"])
   },
 
   data: () => ({
     posicao: {
-        left: false,
-        right: false,
-        top: false,
-        bottom: true
+      left: false,
+      right: false,
+      top: false,
+      bottom: true
     },
     subtitulos: [
-      'Cliente: Cecil',
-      'Autor: Kaique Albuquerque',
-      'Data: 14/01/2020',
-      'Prioridade: Alta'
+      "Cliente: Cecil",
+      "Autor: Kaique Albuquerque",
+      "Data: 14/01/2020",
+      "Prioridade: Alta"
     ],
     component: TextoCard,
     fullDialog: false,
@@ -132,15 +149,14 @@ export default {
 
   created() {
     this.initialize();
-    if(this.$route.path == "/chamados/novo"){
+    if (this.$route.path == "/chamados/novo") {
       this.fullDialog = true;
-    }  
+    }
   },
 
-  watch:{
-    '$route' (to){
-      if(to.path == "/chamados/novo")
-        this.fullDialog = true;
+  watch: {
+    $route(to) {
+      if (to.path == "/chamados/novo") this.fullDialog = true;
     }
   },
 
@@ -221,15 +237,15 @@ export default {
     },
 
     ...mapMutations([
-      'toggleDrawerRight',
-      'toggleSheet',
-      'changeListTrue',
-      'changeListFalse'
+      "toggleDrawerRight",
+      "toggleSheet",
+      "changeListTrue",
+      "changeListFalse"
     ]),
 
     toogleFullDialog() {
       this.fullDialog = false;
-      this.$router.push({path: '/chamados/home'});
+      this.$router.push({ path: "/chamados/home" });
     },
 
     editItem(item) {
@@ -242,7 +258,7 @@ export default {
       const index = this.desserts.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.desserts.splice(index, 1);
-    },
+    }
   }
 };
 </script>

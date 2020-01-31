@@ -4,37 +4,34 @@
       <v-col md="4">
         <sig-card-informacao
           :cor="'indigo'"
-          :titulo="'Novos'"
+          :titulo="'Novos Chamados'"
           :subtitulos="subtitulo1"
           :icone="'mdi-plus'"
           :componentCurrent="component"
           :shaped="true"
           :classeTexto="'display-1'"
-          :classeSubtitulo="'mb-7'"
         ></sig-card-informacao>
       </v-col>
       <v-col md="4">
         <sig-card-informacao
           :cor="'green'"
-          :titulo="'Atendendo'"
+          :titulo="'Em Atendimento'"
           :subtitulos="subtitulo2"
           :icone="'mdi-ticket'"
           :componentCurrent="component"
           :shaped="true"
           :classeTexto="'display-1'"
-          :classeSubtitulo="'mb-7'"
         ></sig-card-informacao>
       </v-col>
       <v-col md="4">
         <sig-card-informacao
           :cor="'red'"
-          :titulo="'Finalizados'"
+          :titulo="'Chamados Finalizados'"
           :subtitulos="subtitulo3"
           :icone="'mdi-check-all'"
           :componentCurrent="component"
           :shaped="true"
           :classeTexto="'display-1'"
-          :classeSubtitulo="'mb-7'"
         ></sig-card-informacao>
       </v-col>
       <v-col md="12">
@@ -83,9 +80,9 @@ export default {
     component1: GraficoLinha,
     component2: GraficoPizza,
     component3: GraficoBarra,
-    subtitulo1: ["1000"],
-    subtitulo2: ["1000"],
-    subtitulo3: ["1000"]
+    subtitulo1: [{ increment: true, value: "500" }],
+    subtitulo2: [{ increment: true, value: "1000" }],
+    subtitulo3: [{ increment: true, value: "600" }]
   })
 };
 </script>
