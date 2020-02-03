@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { store } from "../vuex";
+
 export default {
   props: ["starttime", "endtime", "trans"],
   data: () => ({
@@ -29,7 +31,16 @@ export default {
     this.interval = setInterval(() => {
       this.timerCount(this.start, this.end);
     }, 1000);
+
+    if(this.hours == "00" && this.minutes == "00" && this.seconds == "00"){
+      store.commit('changeClassePiscaTrue');
+    }
+    else{
+      store.commit('changeClassePiscaFalse');
+    }
   },
+
+  
   methods: {
     timerCount: function(start, end) {
       var now = new Date().getTime();
@@ -57,8 +68,15 @@ export default {
       this.minutes = this.minutes < 10 ? "0" + this.minutes : this.minutes;
       this.seconds = Math.floor((dist % (1000 * 60)) / 1000);
       this.seconds = this.seconds < 10 ? "0" + this.seconds : this.seconds;
+
+      if(this.hours == "00" && this.minutes == "00" && this.seconds == "00"){
+        store.commit('changeClassePiscaTrue');
+      }
+      else{
+        store.commit('changeClassePiscaFalse');
+      }
     }
-  }
+  },
 };
 </script>
 

@@ -7,6 +7,8 @@
     raised
     :shaped="shaped"
     :elevation="12"
+    :height="height"
+    dark
   >
     <v-row v-if="temLogo">
       <v-col offset-md="6">
@@ -32,8 +34,9 @@
       style="margin-top:15px;"
     >
       <sig-cronometro
+        :class="classePisca"
         starttime="Jan 31, 2020 15:55:25"
-        endtime="Jan 31, 2020 17:08:25"
+        endtime="Feb 02, 2020 19:59:45"
         trans='
             {  
               "day":"Dias",
@@ -53,6 +56,7 @@
 
 <script>
 import Cronometro from "../components/Cronometro";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -69,15 +73,35 @@ export default {
     "classeTexto",
     "classeSubtitulo",
     "temLogo",
-    "temCronometro"
+    "temCronometro",
+    "height",
   ],
 
   data: () => ({
-    current: null
+    current: null,
   }),
 
   created() {
     this.current = this.componentCurrent;
-  }
+  },
+
+  computed: {
+    ...mapGetters(["classePisca"])
+  },
 };
 </script>
+
+<style scoped>
+  @keyframes fa-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+ }
+.fa-blink {
+  -webkit-animation: fa-blink 1.0s linear infinite;
+  -moz-animation: fa-blink 1.0s linear infinite;
+  -ms-animation: fa-blink 1.0s linear infinite;
+  -o-animation: fa-blink 1.0s linear infinite;
+  animation: fa-blink 1.0s linear infinite;
+}
+</style>

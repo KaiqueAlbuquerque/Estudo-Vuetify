@@ -42,7 +42,7 @@ export default {
 
   methods: {
     formatToPrice(subtitulo) {
-      return `<div class="display-2">${subtitulo}</div>`;
+      return `<div class="display-2"><span style="color:white">${subtitulo}</span></div>`;
     }
   }
 };

@@ -4,7 +4,7 @@
       <sig-menu :menus="menus"></sig-menu>
     </v-navigation-drawer>
 
-    <v-app-bar app clipped-left>
+    <v-app-bar :color="cor" dark app clipped-left>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>SIG</v-toolbar-title>
     </v-app-bar>
@@ -15,7 +15,7 @@
       </transition>
     </v-content>
 
-    <v-footer app>
+    <v-footer :color="cor" dark app>
       <span>&copy; LWM 2020</span>
     </v-footer>
   </v-app>
@@ -30,6 +30,7 @@ export default {
   },
 
   data: () => ({
+    cor: "",
     menus: [
       {
         icon: "mdi-home",
@@ -126,8 +127,15 @@ export default {
   }),
 
   created() {
-    this.$vuetify.theme.dark = true;
-  }
+    this.$vuetify.theme.dark = false;
+
+    if(this.$vuetify.theme.dark == true){
+      this.cor = "";
+    }
+    else {
+      this.cor = "primary";
+    }
+  },
 };
 </script>
 
