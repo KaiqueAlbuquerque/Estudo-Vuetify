@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-resize="onResize">
     <v-navigation-drawer v-model="drawer" app clipped>
       <sig-menu :menus="menus"></sig-menu>
     </v-navigation-drawer>
@@ -7,6 +7,12 @@
     <v-app-bar :color="cor" dark app clipped-left>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>SIG</v-toolbar-title>
+
+      <v-col md="2" offset-md="9">
+        <div class="header-icons">
+          <sig-menuSair :innerWidth="innerWidth" />
+        </div>
+      </v-col>
     </v-app-bar>
 
     <v-content>
@@ -23,13 +29,16 @@
 
 <script>
 import Menu from "../src/components/Menu";
+import MenuSair from "../src/components/menu/MenuSair";
 
 export default {
   components: {
-    "sig-menu": Menu
+    "sig-menu": Menu,
+    "sig-menuSair": MenuSair
   },
 
   data: () => ({
+    innerWidth: 0,
     cor: "",
     menus: [
       {
@@ -129,13 +138,22 @@ export default {
   created() {
     this.$vuetify.theme.dark = false;
 
-    if(this.$vuetify.theme.dark == true){
+    if (this.$vuetify.theme.dark == true) {
       this.cor = "";
-    }
-    else {
+    } else {
       this.cor = "primary";
     }
   },
+
+  mounted() {
+    this.onResize();
+  },
+
+  methods: {
+    onResize() {
+      this.innerWidth = window.innerWidth;
+    }
+  }
 };
 </script>
 
