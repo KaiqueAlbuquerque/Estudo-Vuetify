@@ -14,6 +14,7 @@
 
           <span>{{ user.name }}</span>
         </div>
+        <v-icon style="margin-left:10px;" class="arrow" @click="changeColor()">invert_colors</v-icon>
       </template>
 
       <v-list class="pa-0 rounded-0" dense>
@@ -40,6 +41,8 @@
 </template>
 
 <script>
+import { store } from "../../vuex";
+
 export default {
   props: {
     innerWidth: { type: Number, default: 0 }
@@ -63,8 +66,21 @@ export default {
       }
 
       return require("../../assets/static/images/icon-user.jpg");
+    },
+  },
+
+  methods: {
+    changeColor(){
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+
+      if(this.$vuetify.theme.dark){
+        store.commit('changeCorRemove');
+      }
+      else{
+        store.commit('changeCorAdd');
+      }
     }
-  }
+  },
 };
 </script>
 

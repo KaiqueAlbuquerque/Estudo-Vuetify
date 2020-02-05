@@ -2,8 +2,8 @@
   <div>
     <div>
       <div class="hour">
-        <span class="number"
-          >Expira em: {{ hours }}h{{ minutes }}m{{ seconds }}s</span
+        <span class="number">Expira em: </span>
+        <span :class="classePisca">{{ hours }}h{{ minutes }}m{{ seconds }}s</span
         >
       </div>
     </div>
@@ -12,6 +12,8 @@
 
 <script>
 import { store } from "../vuex";
+import { mapGetters } from "vuex";
+
 
 export default {
   props: ["starttime", "endtime", "trans"],
@@ -40,7 +42,6 @@ export default {
     }
   },
 
-  
   methods: {
     timerCount: function(start, end) {
       var now = new Date().getTime();
@@ -77,6 +78,10 @@ export default {
       }
     }
   },
+
+  computed: {
+    ...mapGetters(["classePisca"])
+  },
 };
 </script>
 
@@ -91,5 +96,17 @@ export default {
   font-size: 14px;
   opacity: 0.8;
   width: 60px;
+}
+@keyframes fa-blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+.fa-blink {
+  -webkit-animation: fa-blink 1.0s linear infinite;
+  -moz-animation: fa-blink 1.0s linear infinite;
+  -ms-animation: fa-blink 1.0s linear infinite;
+  -o-animation: fa-blink 1.0s linear infinite;
+  animation: fa-blink 1.0s linear infinite;
 }
 </style>

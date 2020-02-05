@@ -1,40 +1,44 @@
 <template>
   <div>
     <v-container class="fill-height" fluid>
-      <v-col md="4">
-        <sig-card-informacao
-          :cor="'indigo'"
-          :titulo="'Novos Chamados'"
-          :subtitulos="subtitulo1"
-          :icone="'mdi-plus'"
-          :componentCurrent="component"
-          :shaped="true"
-          :classeTexto="'display-1'"
-          :height="'200'"
-        ></sig-card-informacao>
-      </v-col>
-      <v-col md="4">
+      <v-col md="3">
         <sig-card-informacao
           :cor="'green'"
-          :titulo="'Em Atendimento'"
-          :subtitulos="subtitulo2"
-          :icone="'mdi-ticket'"
+          :titulo="'A Receber'"
+          :subtitulos="subtitulo1"
           :componentCurrent="component"
-          :shaped="true"
           :classeTexto="'display-1'"
-          :height="'200'"
+          :height="'250'"
+        ></sig-card-informacao>
+      </v-col>      
+      <v-col md="3">
+        <sig-card-informacao
+          :cor="'indigo'"
+          :titulo="'Recebido'"
+          :subtitulos="subtitulo3"
+          :componentCurrent="component"
+          :classeTexto="'display-1'"
+          :height="'250'"
         ></sig-card-informacao>
       </v-col>
-      <v-col md="4">
+      <v-col md="3">
         <sig-card-informacao
           :cor="'red'"
-          :titulo="'Chamados Finalizados'"
-          :subtitulos="subtitulo3"
-          :icone="'mdi-check-all'"
+          :titulo="'A Pagar'"
+          :subtitulos="subtitulo2"
           :componentCurrent="component"
-          :shaped="true"
           :classeTexto="'display-1'"
-          :height="'200'"
+          :height="'250'"
+        ></sig-card-informacao>
+      </v-col>
+      <v-col md="3">
+        <sig-card-informacao
+          :cor="'blue lighten-3'"
+          :titulo="'Pago'"
+          :subtitulos="subtitulo3"
+          :componentCurrent="component"
+          :classeTexto="'display-1'"
+          :height="'250'"
         ></sig-card-informacao>
       </v-col>
       <v-col md="12">
@@ -66,9 +70,9 @@
 </template>
 
 <script>
-import CardInformacao from "../../src/components/CardInformacao";
+import CardInformacao from "../../src/components/card/CardInformacao";
 
-import TextoCard from "../../src/components/TextoCard";
+import TextoCard from "../../src/components/card/TextoCard";
 import GraficoLinha from "../../src/components/graficos/GraficoLinha";
 import GraficoPizza from "../../src/components/graficos/GraficoPizza";
 import GraficoBarra from "../../src/components/graficos/GraficoBarra";

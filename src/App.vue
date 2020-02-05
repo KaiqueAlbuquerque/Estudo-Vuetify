@@ -8,11 +8,11 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>SIG</v-toolbar-title>
 
-      <v-col md="2" offset-md="9">
-        <div class="header-icons">
-          <sig-menuSair :innerWidth="innerWidth" />
-        </div>
-      </v-col>
+      <v-spacer></v-spacer>
+
+      <div class="header-icons">
+        <sig-menuSair :innerWidth="innerWidth" />
+      </div>
     </v-app-bar>
 
     <v-content>
@@ -28,8 +28,10 @@
 </template>
 
 <script>
-import Menu from "../src/components/Menu";
+import Menu from "../src/components/menu/Menu";
 import MenuSair from "../src/components/menu/MenuSair";
+
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -37,9 +39,12 @@ export default {
     "sig-menuSair": MenuSair
   },
 
+  computed: {
+    ...mapGetters(["cor"])
+  },
+
   data: () => ({
     innerWidth: 0,
-    cor: "",
     menus: [
       {
         icon: "mdi-home",
@@ -52,40 +57,34 @@ export default {
         text: "Financeiro",
         children: [
           {
+            icon: "assessment",
+            text: "Dashboard",
+            children: [],
+            name: "/financeiro/dashboard"
+          },
+          {
             icon: "call_received",
-            text: "Contas a pagar",
-            children: [
-              {
-                icon: "bar_chart",
-                text: "Centro de custos",
-                children: [],
-                name: "/financeiro/home"
-              },
-              {
-                icon: "timeline",
-                text: "Para receber",
-                children: [],
-                name: ""
-              }
-            ]
+            text: "Centro de custos",
+            children: [],
+            name: "/financeiro/home"
           },
           {
             icon: "call_made",
-            text: "Contas a receber",
-            children: [
-              {
-                icon: "bar_chart",
-                text: "Centro de lucros",
-                children: [],
-                name: ""
-              },
-              {
-                icon: "timeline",
-                text: "Para pagar",
-                children: [],
-                name: ""
-              }
-            ]
+            text: "Centro de lucros",
+            children: [],
+            name: ""
+          },
+          {
+            icon: "trending_up",
+            text: "Para receber",
+            children: [],
+            name: ""
+          },
+          {
+            icon: "trending_down",
+            text: "Para pagar",
+            children: [],
+            name: ""
           }
         ]
       },
@@ -134,16 +133,6 @@ export default {
     ],
     drawer: null
   }),
-
-  created() {
-    this.$vuetify.theme.dark = false;
-
-    if (this.$vuetify.theme.dark == true) {
-      this.cor = "";
-    } else {
-      this.cor = "primary";
-    }
-  },
 
   mounted() {
     this.onResize();

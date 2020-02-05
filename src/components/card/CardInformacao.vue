@@ -15,7 +15,7 @@
         <v-img
           height="15"
           width="100"
-          :src="require('../assets/static/images/aubrick.png')"
+          :src="require('../../assets/static/images/aubrick.png')"
         ></v-img>
       </v-col>
     </v-row>
@@ -34,9 +34,8 @@
       style="margin-top:15px;"
     >
       <sig-cronometro
-        :class="classePisca"
         starttime="Jan 31, 2020 15:55:25"
-        endtime="Feb 02, 2020 19:59:45"
+        endtime="Feb 04, 2020 20:50:45"
         trans='
             {  
               "day":"Dias",
@@ -55,8 +54,7 @@
 </template>
 
 <script>
-import Cronometro from "../components/Cronometro";
-import { mapGetters } from "vuex";
+import Cronometro from "../Cronometro";
 
 export default {
   components: {
@@ -84,24 +82,5 @@ export default {
   created() {
     this.current = this.componentCurrent;
   },
-
-  computed: {
-    ...mapGetters(["classePisca"])
-  },
 };
 </script>
-
-<style scoped>
-  @keyframes fa-blink {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 0; }
- }
-.fa-blink {
-  -webkit-animation: fa-blink 1.0s linear infinite;
-  -moz-animation: fa-blink 1.0s linear infinite;
-  -ms-animation: fa-blink 1.0s linear infinite;
-  -o-animation: fa-blink 1.0s linear infinite;
-  animation: fa-blink 1.0s linear infinite;
-}
-</style>

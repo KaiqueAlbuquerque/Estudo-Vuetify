@@ -8,7 +8,8 @@ const store = new Vuex.Store({
         drawerRight: false,
         sheet: false,
         list: true,
-        classePisca: ""
+        classePisca: "",
+        cor: "primary"
     },
     mutations: {
         toggleDrawerRight: state => state.drawerRight = !state.drawerRight,
@@ -17,12 +18,15 @@ const store = new Vuex.Store({
         changeListFalse: state => state.list = false,
         changeClassePiscaTrue: state => state.classePisca = "fa-blink",
         changeClassePiscaFalse: state => state.classePisca = "",
+        changeCorAdd: state => state.cor = "primary",
+        changeCorRemove: state => state.cor = ""
     },
     getters: {
         drawerRight: state => state.drawerRight,
         sheet: state => state.sheet,
         list: state => state.list,
-        classePisca: state => state.classePisca
+        classePisca: state => state.classePisca,
+        cor: state => state.cor
     }
 })
 

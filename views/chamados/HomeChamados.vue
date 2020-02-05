@@ -100,8 +100,8 @@ import TelaLateral from "../../src/components/TelaLateral";
 import Interacoes from "./Interacoes";
 import NovoChamado from "./NovoChamado";
 import NovaInteracao from "./NovaInteracao";
-import CardInformacao from "../../src/components/CardInformacao";
-import TextoCard from "../../src/components/TextoCard";
+import CardInformacao from "../../src/components/card/CardInformacao";
+import TextoCard from "../../src/components/card/TextoCard";
 import BotaoTooltip from "../../src/components/BotaoTooltip";
 
 import { mapGetters, mapMutations } from "vuex";
