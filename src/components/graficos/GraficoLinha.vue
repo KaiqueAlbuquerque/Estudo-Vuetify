@@ -3,7 +3,11 @@
     <v-list-item-title :class="classeTexto" class="mb-1">{{
       titulo
     }}</v-list-item-title>
-    <canvas style="margin-top:25px" id="graficoLinha" height="50"></canvas>
+    <canvas
+      style="margin-top:25px;max-width:100%;"
+      :id="dadosGraficoLinha.id"
+      :height="dadosGraficoLinha.height"
+    ></canvas>
   </div>
 </template>
 
@@ -13,7 +17,7 @@ import Linha from "./Linha.js";
 import Chart from "chart.js";
 
 export default {
-  props: ["titulo", "classeTexto"],
+  props: ["titulo", "classeTexto", "dadosGraficoLinha"],
 
   methods: {
     createChart(chartId, chartData) {
@@ -26,7 +30,7 @@ export default {
     },
 
     montaTela() {
-      let graficoLinha = new Linha(
+      let grafico = new Linha(
         "Requisições",
         [
           "Janeiro",
@@ -52,7 +56,7 @@ export default {
         false
       );
 
-      this.createChart("graficoLinha", graficoLinha.geraGraficoLinha());
+      this.createChart(this.dadosGraficoLinha.id, grafico.geraGraficoLinha());
     }
   },
 

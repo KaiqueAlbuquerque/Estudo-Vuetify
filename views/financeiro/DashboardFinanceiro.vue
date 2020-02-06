@@ -1,70 +1,61 @@
 <template>
   <div>
-    <v-container class="fill-height" fluid>
-      <v-col md="3">
+    <v-container class="fill-height">
+      <div class="parent">
         <sig-card-informacao
           :cor="'green'"
           :titulo="'A Receber'"
           :subtitulos="subtitulo1"
           :componentCurrent="component"
           :classeTexto="'display-1'"
-          :height="'250'"
+          class="div1"
         ></sig-card-informacao>
-      </v-col>      
-      <v-col md="3">
+
         <sig-card-informacao
           :cor="'indigo'"
           :titulo="'Recebido'"
           :subtitulos="subtitulo3"
           :componentCurrent="component"
           :classeTexto="'display-1'"
-          :height="'250'"
+          class="div2"
         ></sig-card-informacao>
-      </v-col>
-      <v-col md="3">
+
+        <sig-card-informacao
+          :titulo="'Finalizados'"
+          :classeTexto="'display-1'"
+          :cor="'red'"
+          :componentCurrent="component1"
+          class="div3"
+          :dadosGraficoLinha="dadosGraficoLinha"
+        ></sig-card-informacao>
+
+        <sig-card-informacao
+          :titulo="'Produtos'"
+          :classeTexto="'display-1'"
+          :cor="'green'"
+          :componentCurrent="component3"
+          class="div4"
+          :dadosGraficoBarra="dadosGraficoBarra"
+        ></sig-card-informacao>
+
         <sig-card-informacao
           :cor="'red'"
           :titulo="'A Pagar'"
           :subtitulos="subtitulo2"
           :componentCurrent="component"
           :classeTexto="'display-1'"
-          :height="'250'"
+          class="div5"
         ></sig-card-informacao>
-      </v-col>
-      <v-col md="3">
+
         <sig-card-informacao
           :cor="'blue lighten-3'"
           :titulo="'Pago'"
           :subtitulos="subtitulo3"
           :componentCurrent="component"
           :classeTexto="'display-1'"
-          :height="'250'"
+          class="div6"
         ></sig-card-informacao>
-      </v-col>
-      <v-col md="12">
-        <sig-card-informacao
-          :titulo="'Finalizados'"
-          :classeTexto="'display-1'"
-          :cor="'red'"
-          :componentCurrent="component1"
-        ></sig-card-informacao>
-      </v-col>
-      <v-col md="6">
-        <sig-card-informacao
-          :titulo="'Clientes'"
-          :classeTexto="'display-1'"
-          :cor="'indigo'"
-          :componentCurrent="component2"
-        ></sig-card-informacao>
-      </v-col>
-      <v-col md="6">
-        <sig-card-informacao
-          :titulo="'Produtos'"
-          :classeTexto="'display-1'"
-          :cor="'green'"
-          :componentCurrent="component3"
-        ></sig-card-informacao>
-      </v-col>
+      </div>
     </v-container>
   </div>
 </template>
@@ -89,7 +80,48 @@ export default {
     component3: GraficoBarra,
     subtitulo1: [{ increment: true, value: "500" }],
     subtitulo2: [{ increment: true, value: "1000" }],
-    subtitulo3: [{ increment: true, value: "600" }]
+    subtitulo3: [{ increment: true, value: "600" }],
+    dadosGraficoLinha: {
+      id: "graficoLinhaDashFinanceiro",
+      height: "100"
+    },
+    dadosGraficoPizza: {
+      id: "graficoPizzaDashFinanceiro",
+      height: "100"
+    },
+    dadosGraficoBarra: {
+      id: "graficoBarraDashFinanceiro",
+      height: "100"
+    }
   })
 };
 </script>
+
+<style scoped>
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.div2 {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.div3 {
+  grid-area: 1 / 2 / 3 / 5;
+}
+.div4 {
+  grid-area: 3 / 1 / 5 / 4;
+}
+.div5 {
+  grid-area: 3 / 4 / 4 / 5;
+}
+.div6 {
+  grid-area: 4 / 4 / 5 / 5;
+}
+</style>

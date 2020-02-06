@@ -26,6 +26,9 @@
       :icone="icone"
       :classeTexto="classeTexto"
       :classeSubtitulo="classeSubtitulo"
+      :dadosGraficoLinha="dadosGraficoLinha"
+      :dadosGraficoPizza="dadosGraficoPizza"
+      :dadosGraficoBarra="dadosGraficoBarra"
     ></component>
     <v-layout
       v-if="temCronometro == true"
@@ -73,14 +76,17 @@ export default {
     "temLogo",
     "temCronometro",
     "height",
+    "dadosGraficoLinha",
+    "dadosGraficoPizza",
+    "dadosGraficoBarra"
   ],
 
   data: () => ({
-    current: null,
+    current: null
   }),
 
   created() {
     this.current = this.componentCurrent;
-  },
+  }
 };
 </script>

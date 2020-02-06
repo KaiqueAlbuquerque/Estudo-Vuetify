@@ -4,8 +4,9 @@
       titulo
     }}</v-list-item-title>
     <canvas
-      style="margin-top:25px; max-width:1027px"
-      id="graficoPizza"
+      style="margin-top:25px;max-width:100%;"
+      :id="dadosGraficoPizza.id"
+      :height="dadosGraficoPizza.height"
     ></canvas>
   </div>
 </template>
@@ -18,7 +19,7 @@ import Chart from "chart.js";
 import MontaCores from "../../../servicos/MontaCores.js";
 
 export default {
-  props: ["titulo", "classeTexto"],
+  props: ["titulo", "classeTexto", "dadosGraficoPizza"],
 
   methods: {
     createChart(chartId, chartData) {
@@ -36,9 +37,9 @@ export default {
         cores.push(MontaCores.geraCor());
       }
 
-      let graficoPizza = new Pizza(["Janeiro", "Fevereiro"], cores, [10, 20]);
+      let grafico = new Pizza(["Janeiro", "Fevereiro"], cores, [10, 20]);
 
-      this.createChart("graficoPizza", graficoPizza.geraGraficoPizza());
+      this.createChart(this.dadosGraficoPizza.id, grafico.geraGraficoPizza());
     }
   },
 

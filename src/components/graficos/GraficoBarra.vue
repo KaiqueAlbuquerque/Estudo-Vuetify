@@ -4,8 +4,9 @@
       titulo
     }}</v-list-item-title>
     <canvas
-      style="margin-top:25px; max-width:1027px"
-      id="graficoBarra"
+      style="margin-top:25px;max-width:100%;"
+      :id="dadosGraficoBarra.id"
+      :height="dadosGraficoBarra.height"
     ></canvas>
   </div>
 </template>
@@ -16,7 +17,7 @@ import Barra from "./Barra.js";
 import Chart from "chart.js";
 
 export default {
-  props: ["titulo", "classeTexto"],
+  props: ["titulo", "classeTexto", "dadosGraficoBarra"],
 
   methods: {
     createChart(chartId, chartData) {
@@ -29,7 +30,7 @@ export default {
     },
 
     montaTela() {
-      let graficoBarra = new Barra(
+      let grafico = new Barra(
         [
           "2015-01",
           "2015-02",
@@ -79,7 +80,7 @@ export default {
         "Dia do mês"
       );
 
-      this.createChart("graficoBarra", graficoBarra.geraGraficoBarra());
+      this.createChart(this.dadosGraficoBarra.id, grafico.geraGraficoBarra());
     }
   },
 
