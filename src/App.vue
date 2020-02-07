@@ -63,28 +63,40 @@ export default {
             name: "/financeiro/dashboard"
           },
           {
-            icon: "call_received",
-            text: "Centro de custos",
-            children: [],
-            name: "/financeiro/home"
+            icon: "attach_money",
+            text: "Centros",
+            children: [
+              {
+                icon: "call_received",
+                text: "Centro de custos",
+                children: [],
+                name: "/financeiro/home"
+              },
+              {
+                icon: "call_made",
+                text: "Centro de lucros",
+                children: [],
+                name: ""
+              }
+            ]
           },
           {
-            icon: "call_made",
-            text: "Centro de lucros",
-            children: [],
-            name: ""
-          },
-          {
-            icon: "trending_up",
-            text: "Para receber",
-            children: [],
-            name: ""
-          },
-          {
-            icon: "trending_down",
-            text: "Para pagar",
-            children: [],
-            name: ""
+            icon: "account_balance",
+            text: "Contas",
+            children: [
+              {
+                icon: "trending_up",
+                text: "Para receber",
+                children: [],
+                name: ""
+              },
+              {
+                icon: "trending_down",
+                text: "Para pagar",
+                children: [],
+                name: ""
+              }
+            ]
           }
         ]
       },

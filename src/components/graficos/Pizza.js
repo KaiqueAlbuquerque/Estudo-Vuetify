@@ -13,9 +13,9 @@ export default class Pizza {
                 datasets: [
                     {
                         backgroundColor: this._cores,
-                        data: this._dados
+                        data: this._dados,
                     },
-                ]
+                ],
             },
             options: {
                 responsive: true,
