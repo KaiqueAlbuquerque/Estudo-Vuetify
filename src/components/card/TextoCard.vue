@@ -9,7 +9,13 @@
         class="subtitle-1"
       >
         <template v-if="subtitulo.increment == true">
-          <animated-number
+          <animated-number v-if="subtitulo.moeda == false"
+            :value="subtitulo.value"
+            :formatValue="formatToNumber"
+            :duration="1000"
+            round="1"
+          />
+          <animated-number v-else
             :value="subtitulo.value"
             :formatValue="formatToPrice"
             :duration="1000"
@@ -41,8 +47,11 @@ export default {
   props: ["titulo", "subtitulos", "icone", "classeTexto", "classeSubtitulo"],
 
   methods: {
-    formatToPrice(subtitulo) {
+    formatToNumber(subtitulo) {
       return `<div class="display-2"><span style="color:white">${subtitulo}</span></div>`;
+    },
+    formatToPrice(subtitulo){
+      return `<div class="display-2"><span style="color:white">R$${Number(subtitulo).toFixed(2).replace(".",",")}</span></div>`;
     }
   }
 };
