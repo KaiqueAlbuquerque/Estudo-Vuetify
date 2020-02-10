@@ -1,30 +1,33 @@
 <template>
   <div>
+    <v-card>
+      <v-layout align-center justify-space-between>
+        <div style="margin-left:10px;">
+          <h1>Chamados</h1>
+        </div>
+        <div style="margin-right:20px;">
+          <sig-botaoTooltip
+            :posicao="posicao"
+            :click="changeListTrue"
+            :animacao="'rubberBand'"
+            :icone="'mdi-table'"
+            :texto="'Tabela'"
+          >
+          </sig-botaoTooltip>
+          <sig-botaoTooltip
+            :posicao="posicao"
+            :click="changeListFalse"
+            :animacao="'rubberBand'"
+            :icone="'mdi-crop-square'"
+            :texto="'Card'"
+          >
+          </sig-botaoTooltip>
+        </div>
+      </v-layout>
+    </v-card>
+
     <v-container class="fill-height" fluid>
       <v-row align="center">
-        <v-col md="10">
-          <h1>Chamados</h1>
-        </v-col>
-        <v-col md="2">
-          <v-layout align-end justify-end>
-            <sig-botaoTooltip
-              :posicao="posicao"
-              :click="changeListTrue"
-              :animacao="'rubberBand'"
-              :icone="'mdi-table'"
-              :texto="'Tabela'"
-            >
-            </sig-botaoTooltip>
-            <sig-botaoTooltip
-              :posicao="posicao"
-              :click="changeListFalse"
-              :animacao="'rubberBand'"
-              :icone="'mdi-crop-square'"
-              :texto="'Card'"
-            >
-            </sig-botaoTooltip>
-          </v-layout>
-        </v-col>
         <v-col v-if="list == true">
           <v-data-table
             :headers="headers"
@@ -39,7 +42,8 @@
           </v-data-table>
         </v-col>
         <v-col md="3" v-else v-for="dessert in desserts" :key="dessert.name">
-          <sig-card-informacao v-if="dessert.prioridade == 'baixa'"
+          <sig-card-informacao
+            v-if="dessert.prioridade == 'baixa'"
             :titulo="'Nº Chamado: 53717'"
             :subtitulos="subtitulos"
             :componentCurrent="component"
@@ -48,7 +52,8 @@
             :temCronometro="true"
             :cor="'blue'"
           ></sig-card-informacao>
-          <sig-card-informacao v-else-if="dessert.prioridade == 'alta'"
+          <sig-card-informacao
+            v-else-if="dessert.prioridade == 'alta'"
             :titulo="'Nº Chamado: 53717'"
             :subtitulos="subtitulos"
             :componentCurrent="component"
@@ -57,7 +62,8 @@
             :temCronometro="true"
             :cor="'red'"
           ></sig-card-informacao>
-          <sig-card-informacao v-else
+          <sig-card-informacao
+            v-else
             :titulo="'Nº Chamado: 53717'"
             :subtitulos="subtitulos"
             :componentCurrent="component"

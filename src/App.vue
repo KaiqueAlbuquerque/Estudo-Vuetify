@@ -65,20 +65,8 @@ export default {
           {
             icon: "attach_money",
             text: "Centros",
-            children: [
-              {
-                icon: "call_received",
-                text: "Centro de custos",
-                children: [],
-                name: "/financeiro/home"
-              },
-              {
-                icon: "call_made",
-                text: "Centro de lucros",
-                children: [],
-                name: ""
-              }
-            ]
+            children: [],
+            name: "/financeiro/centros"
           },
           {
             icon: "account_balance",

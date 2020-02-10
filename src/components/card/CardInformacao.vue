@@ -1,59 +1,60 @@
 <template>
-  <v-card
-    class="pa-5"
-    centered
-    outlined
-    :color="cor"
-    raised
-    :shaped="shaped"
-    :elevation="12"
-    :height="height"
-    dark
-  >
-    <v-row v-if="temLogo">
-      <v-col offset-md="6">
-        <v-img
-          height="15"
-          width="100"
-          :src="require('../../assets/static/images/aubrick.png')"
-        ></v-img>
-      </v-col>
-    </v-row>
-    <component
-      v-bind:is="current"
-      :titulo="titulo"
-      :subtitulos="subtitulos"
-      :icone="icone"
-      :classeTexto="classeTexto"
-      :classeSubtitulo="classeSubtitulo"
-      :dadosGraficoLinha="dadosGraficoLinha"
-      :dadosGraficoPizza="dadosGraficoPizza"
-      :dadosGraficoBarra="dadosGraficoBarra"
-    ></component>
-    <v-layout
-      v-if="temCronometro == true"
-      align-end
-      justify-end
-      style="margin-top:15px;"
+  <v-hover v-slot:default="{ hover }">
+    <v-card
+      class="pa-5"
+      centered
+      outlined
+      :color="cor"
+      :shaped="shaped"
+      :elevation="hover ? 24 : 0"
+      :height="height"
+      dark
     >
-      <sig-cronometro
-        starttime="Jan 31, 2020 15:55:25"
-        endtime="Feb 04, 2020 20:50:45"
-        trans='
-            {  
-              "day":"Dias",
-              "hours":"Horas",
-              "minutes":"Minutos",
-              "seconds":"Segundos",
-              "status": {
-                  "expired":"",
-                  "running":"",
-                  "upcoming":""
-              }
-           }'
-      ></sig-cronometro>
-    </v-layout>
-  </v-card>
+      <v-row v-if="temLogo">
+        <v-col offset-md="6">
+          <v-img
+            height="15"
+            width="100"
+            :src="require('../../assets/static/images/aubrick.png')"
+          ></v-img>
+        </v-col>
+      </v-row>
+      <component
+        v-bind:is="current"
+        :titulo="titulo"
+        :subtitulos="subtitulos"
+        :icone="icone"
+        :classeTexto="classeTexto"
+        :classeSubtitulo="classeSubtitulo"
+        :dadosGraficoLinha="dadosGraficoLinha"
+        :dadosGraficoPizza="dadosGraficoPizza"
+        :dadosGraficoBarra="dadosGraficoBarra"
+      ></component>
+      <v-layout
+        v-if="temCronometro == true"
+        align-end
+        justify-end
+        style="margin-top:15px;"
+      >
+        <sig-cronometro
+          starttime="Jan 31, 2020 15:55:25"
+          endtime="Feb 04, 2020 20:50:45"
+          trans='
+              {  
+                "day":"Dias",
+                "hours":"Horas",
+                "minutes":"Minutos",
+                "seconds":"Segundos",
+                "status": {
+                    "expired":"",
+                    "running":"",
+                    "upcoming":""
+                }
+            }'
+        ></sig-cronometro>
+      </v-layout>
+    </v-card>
+  </v-hover>
 </template>
 
 <script>
