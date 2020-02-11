@@ -28,25 +28,29 @@
       </v-layout>
     </v-card>
 
-    <div v-if="bottomNav == 0">
-      <v-treeview
-        v-model="tree"
-        :open="open"
-        :items="items"
-        activatable
-        item-key="name"
-        open-on-click
-      >
-        <template v-slot:prepend="{ item, open }">
-          <v-icon v-if="!item.file">
-            {{ open ? "mdi-folder-open" : "mdi-folder" }}
-          </v-icon>
-          <v-icon v-else>
-            {{ files[item.file] }}
-          </v-icon>
-        </template>
-      </v-treeview>
-    </div>
+    <v-container v-if="bottomNav == 0" style="padding-bottom: 60px;">
+      <v-row>
+        <v-col md="6">
+          <v-treeview
+            v-model="tree"
+            :open="open"
+            :items="items"
+            activatable
+            item-key="name"
+            open-on-click
+            dense
+            rounded
+            color="primary"
+          >
+            <template v-slot:prepend="{ item, open }">
+              <v-icon v-if="!item.file">
+                {{ open ? "mdi-folder-open" : "mdi-folder" }}
+              </v-icon>
+            </template>
+          </v-treeview>
+        </v-col>
+      </v-row>
+    </v-container>
 
     <v-bottom-navigation v-model="bottomNav" absolute>
       <v-btn>
@@ -68,16 +72,6 @@ export default {
     return {
       bottomNav: 0,
       open: ["public"],
-      files: {
-        html: "mdi-language-html5",
-        js: "mdi-nodejs",
-        json: "mdi-json",
-        md: "mdi-markdown",
-        pdf: "mdi-file-pdf",
-        png: "mdi-file-image",
-        txt: "mdi-file-document-outline",
-        xls: "mdi-file-excel"
-      },
       tree: [],
       items: [
         {

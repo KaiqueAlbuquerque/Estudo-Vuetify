@@ -1,6 +1,11 @@
 <template>
   <v-app v-resize="onResize">
-    <v-navigation-drawer v-model="drawer" app clipped>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      clipped
+      style="max-height: calc(100% - 0px);"
+    >
       <sig-menu :menus="menus"></sig-menu>
     </v-navigation-drawer>
 
@@ -21,7 +26,7 @@
       </transition>
     </v-content>
 
-    <v-footer :color="cor" dark app absolute>
+    <v-footer :color="cor" dark app absolute inset>
       <span>&copy; LWM 2020</span>
     </v-footer>
   </v-app>
