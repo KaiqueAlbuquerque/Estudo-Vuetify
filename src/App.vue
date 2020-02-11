@@ -21,7 +21,7 @@
       </transition>
     </v-content>
 
-    <v-footer :color="cor" dark app>
+    <v-footer :color="cor" dark app absolute>
       <span>&copy; LWM 2020</span>
     </v-footer>
   </v-app>
