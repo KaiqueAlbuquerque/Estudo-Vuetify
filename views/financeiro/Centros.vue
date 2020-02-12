@@ -4,26 +4,7 @@
       <v-layout align-center justify-space-between>
         <div style="margin-left:10px;">
           <h1 v-if="bottomNav == 0">Centro de Custo</h1>
-
           <h1 v-else>Centro de Lucro</h1>
-        </div>
-        <div style="margin-right:20px;">
-          <sig-botaoTooltip
-            :posicao="posicao"
-            :click="changeListTrue"
-            :animacao="'rubberBand'"
-            :icone="'mdi-table'"
-            :texto="'Tabela'"
-          >
-          </sig-botaoTooltip>
-          <sig-botaoTooltip
-            :posicao="posicao"
-            :click="changeListFalse"
-            :animacao="'rubberBand'"
-            :icone="'mdi-crop-square'"
-            :texto="'Card'"
-          >
-          </sig-botaoTooltip>
         </div>
       </v-layout>
     </v-card>
@@ -35,19 +16,83 @@
             v-model="tree"
             :open="open"
             :items="items"
-            activatable
             item-key="name"
             open-on-click
             dense
-            rounded
-            color="primary"
           >
-            <template v-slot:prepend="{ item, open }">
-              <v-icon v-if="!item.file">
-                {{ open ? "mdi-folder-open" : "mdi-folder" }}
-              </v-icon>
+            <template v-slot:label="{ item, open }">
+              <v-btn text @contextmenu="show" :id="item.name">
+                <!--button icon-->
+                <v-icon v-if="!item.filho" :id="item.name">
+                  {{ open ? "mdi-folder-open" : "mdi-folder" }}
+                </v-icon>
+                <!--button text-->
+                <span :id="item.name">{{ item.name }}</span>
+              </v-btn>
             </template>
           </v-treeview>
+          <v-menu
+            v-model="showMenu"
+              :position-x="x"
+              :position-y="y"
+              absolute
+              offset-y
+          >
+            <v-list rounded dense>
+              <v-subheader>Ações</v-subheader>
+              <v-list-item
+                v-for="menuItem in menuItems"
+                :key="menuItem"
+                @click="clickAction(menuItem)"
+              >
+                <v-list-item-content>{{ menuItem }}</v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container v-else style="padding-bottom: 60px;">
+      <v-row>
+        <v-col md="6">
+          <v-treeview
+            v-model="tree"
+            :open="open"
+            :items="items"
+            item-key="name"
+            open-on-click
+            dense
+          >
+            <template v-slot:label="{ item, open }">
+              <v-btn text @contextmenu="show" :id="item.name">
+                <!--button icon-->
+                <v-icon v-if="!item.filho" :id="item.name">
+                  {{ open ? "mdi-folder-open" : "mdi-folder" }}
+                </v-icon>
+                <!--button text-->
+                <span :id="item.name">{{ item.name }}</span>
+              </v-btn>
+            </template>
+          </v-treeview>
+          <v-menu
+            v-model="showMenu"
+              :position-x="x"
+              :position-y="y"
+              absolute
+              offset-y
+          >
+            <v-list rounded dense>
+              <v-subheader>Ações</v-subheader>
+              <v-list-item
+                v-for="menuItem in menuItems"
+                :key="menuItem"
+                @click="clickAction(menuItem)"
+              >
+                <v-list-item-content>{{ menuItem }}</v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-col>
       </v-row>
     </v-container>
@@ -68,66 +113,106 @@
 
 <script>
 export default {
-  data() {
-    return {
-      bottomNav: 0,
-      open: ["public"],
-      tree: [],
-      items: [
-        {
-          name: ".git"
-        },
-        {
-          name: "node_modules"
-        },
-        {
-          name: "public",
-          children: [
-            {
-              name: "static",
-              children: [
-                {
-                  name: "logo.png",
-                  file: "png"
-                }
-              ]
-            },
-            {
-              name: "favicon.ico",
-              file: "png"
-            },
-            {
-              name: "index.html",
-              file: "html"
-            }
-          ]
-        },
-        {
-          name: ".gitignore",
-          file: "txt"
-        },
-        {
-          name: "babel.config.js",
-          file: "js"
-        },
-        {
-          name: "package.json",
-          file: "json"
-        },
-        {
-          name: "README.md",
-          file: "md"
-        },
-        {
-          name: "vue.config.js",
-          file: "js"
-        },
-        {
-          name: "yarn.lock",
-          file: "txt"
-        }
-      ]
-    };
+  data: () => ({
+    atual: "",
+    bottomNav: 0,
+    open: ["public"],
+    tree: [],
+    items: [
+      {
+        name: "Moradia",
+        children: [
+          {
+            name: "Aluguel",
+            filho: true
+          },
+          {
+            name: "Água",
+            filho: true
+          },
+          {
+            name: "Luz",
+            filho: true
+          },
+          {
+            name: "IPTU",
+            filho: true
+          }
+        ]
+      },
+      {
+        name: "Veículos",
+        children: [
+          {
+            name: "Combustível",
+            filho: true
+          },
+          {
+            name: "IPVA",
+            filho: true
+          },
+          {
+            name: "Seguro",
+            filho: true
+          }
+        ]
+      },
+      {
+        name: "Funcionários",
+        children: [
+          {
+            name: "Impostos",
+            children: [
+              {
+                name: "INSS",
+                filho: true
+              },
+              {
+                name: "FGTS",
+                filho: true
+              }
+            ]
+          },
+          {
+            name: "Folha de Pagamento",
+            children: [
+              {
+                name: "Pagamento",
+                filho: true
+              },
+              {
+                name: "13º",
+                filho: true
+              },
+              {
+                name: "Férias",
+                filho: true
+              }
+            ]
+          },
+        ]
+      },
+    ],
+    showMenu: false,
+    x: 0,
+    y: 0,
+    menuItems: ["Adicionar Filho", "Adicionar Irmão"]
+  }),
+  methods: {
+    clickAction(e){
+      alert(e);
+      alert(this.atual);
+    },
+    show(e) {
+      this.atual = e.target.id;
+      e.preventDefault();
+      this.showMenu = false;
+      this.x = e.clientX;
+      this.y = e.clientY;
+      this.$nextTick(() => {
+        this.showMenu = true;
+      });
+    }
   }
 };
 </script>

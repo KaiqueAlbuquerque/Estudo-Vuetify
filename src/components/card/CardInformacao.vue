@@ -1,14 +1,13 @@
 <template>
-  <v-hover v-slot:default="{ hover }">
     <v-card
       class="pa-5"
       centered
       outlined
       :color="cor"
       :shaped="shaped"
-      :elevation="hover ? 24 : 0"
       :height="height"
       dark
+      v-animate-css.hover="'pulse'"
     >
       <v-row v-if="temLogo">
         <v-col offset-md="6">
@@ -54,7 +53,6 @@
         ></sig-cronometro>
       </v-layout>
     </v-card>
-  </v-hover>
 </template>
 
 <script>
