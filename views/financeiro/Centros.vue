@@ -31,24 +31,84 @@
               </v-btn>
             </template>
           </v-treeview>
-          <v-menu
-            v-model="showMenu"
-              :position-x="x"
-              :position-y="y"
-              absolute
-              offset-y
-          >
-            <v-list rounded dense>
-              <v-subheader>Ações</v-subheader>
-              <v-list-item
-                v-for="menuItem in menuItems"
-                :key="menuItem"
-                @click="clickAction(menuItem)"
-              >
-                <v-list-item-content>{{ menuItem }}</v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+        </v-col>
+        <v-divider vertical></v-divider>
+
+        <v-col class="d-flex text-center">
+          <v-scroll-y-transition mode="out-in">
+            <div
+              v-if="!selected"
+              class="title grey--text text--lighten-1 font-weight-light"
+              style="align-self: center;"
+            ></div>
+            <v-form>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Regular"
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Regular"
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Solo"
+                      solo
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Solo"
+                      solo
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Filled"
+                      filled
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Filled"
+                      filled
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Outlined"
+                      outlined
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6">
+                    <v-text-field
+                      value="John Doe"
+                      label="Outlined"
+                      outlined
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
+          </v-scroll-y-transition>
         </v-col>
       </v-row>
     </v-container>
@@ -75,24 +135,6 @@
               </v-btn>
             </template>
           </v-treeview>
-          <v-menu
-            v-model="showMenu"
-              :position-x="x"
-              :position-y="y"
-              absolute
-              offset-y
-          >
-            <v-list rounded dense>
-              <v-subheader>Ações</v-subheader>
-              <v-list-item
-                v-for="menuItem in menuItems"
-                :key="menuItem"
-                @click="clickAction(menuItem)"
-              >
-                <v-list-item-content>{{ menuItem }}</v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-menu>
         </v-col>
       </v-row>
     </v-container>
@@ -108,12 +150,31 @@
         <v-icon>call_made</v-icon>
       </v-btn>
     </v-bottom-navigation>
+    <v-menu
+      v-model="showMenu"
+      :position-x="x"
+      :position-y="y"
+      absolute
+      offset-y
+    >
+      <v-list rounded dense>
+        <v-subheader>Ações</v-subheader>
+        <v-list-item
+          v-for="menuItem in menuItems"
+          :key="menuItem"
+          @click="clickAction(menuItem)"
+        >
+          <v-list-item-content>{{ menuItem }}</v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
+    selected: true,
     atual: "",
     bottomNav: 0,
     open: ["public"],
@@ -189,9 +250,9 @@ export default {
                 filho: true
               }
             ]
-          },
+          }
         ]
-      },
+      }
     ],
     showMenu: false,
     x: 0,
@@ -199,7 +260,7 @@ export default {
     menuItems: ["Adicionar Filho", "Adicionar Irmão"]
   }),
   methods: {
-    clickAction(e){
+    clickAction(e) {
       alert(e);
       alert(this.atual);
     },
