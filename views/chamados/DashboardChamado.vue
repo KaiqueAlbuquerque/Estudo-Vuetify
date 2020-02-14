@@ -11,7 +11,6 @@
             :componentCurrent="component"
             :shaped="true"
             :classeTexto="'display-1'"
-            :height="'200'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="4">
@@ -23,7 +22,6 @@
             :componentCurrent="component"
             :shaped="true"
             :classeTexto="'display-1'"
-            :height="'200'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="4">
@@ -35,7 +33,6 @@
             :componentCurrent="component"
             :shaped="true"
             :classeTexto="'display-1'"
-            :height="'200'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="12">

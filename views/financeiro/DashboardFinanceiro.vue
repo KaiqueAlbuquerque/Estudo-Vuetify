@@ -3,29 +3,24 @@
     <v-container class="fill-height">
       <div class="parent">
         <sig-card-informacao
-          :cor="'green darken-4'"
           :titulo="'A Receber'"
           :subtitulos="subtitulo1"
           :componentCurrent="component"
           :classeTexto="'display-1'"
           class="div1"
-          :shaped="true"
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :cor="'green accent-4'"
           :titulo="'Recebido'"
           :subtitulos="subtitulo3"
           :componentCurrent="component"
           :classeTexto="'display-1'"
           class="div2"
-          :shaped="true"
         ></sig-card-informacao>
 
         <sig-card-informacao
           :titulo="'Finalizados'"
           :classeTexto="'display-1'"
-          :cor="'green'"
           :componentCurrent="component1"
           class="div3"
           :dadosGraficoLinha="dadosGraficoLinha"
@@ -33,29 +28,24 @@
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :cor="'red darken-4'"
           :titulo="'A Pagar'"
           :subtitulos="subtitulo2"
           :componentCurrent="component"
           :classeTexto="'display-1'"
           class="div4"
-          :shaped="true"
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :cor="'red accent-2'"
           :titulo="'Pago'"
           :subtitulos="subtitulo3"
           :componentCurrent="component"
           :classeTexto="'display-1'"
           class="div5"
-          :shaped="true"
         ></sig-card-informacao>
 
         <sig-card-informacao
           :titulo="'Produtos'"
           :classeTexto="'display-1'"
-          :cor="'red'"
           :componentCurrent="component3"
           class="div6"
           :dadosGraficoBarra="dadosGraficoBarra"

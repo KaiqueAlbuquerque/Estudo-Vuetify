@@ -44,33 +44,27 @@
         <v-col md="3" v-else v-for="dessert in desserts" :key="dessert.name">
           <sig-card-informacao
             v-if="dessert.prioridade == 'baixa'"
-            :titulo="'Nº Chamado: 53717'"
             :subtitulos="subtitulos"
             :componentCurrent="component"
             :classeTexto="'subtitle'"
             :temLogo="true"
             :temCronometro="true"
-            :cor="'blue'"
           ></sig-card-informacao>
           <sig-card-informacao
             v-else-if="dessert.prioridade == 'alta'"
-            :titulo="'Nº Chamado: 53717'"
             :subtitulos="subtitulos"
             :componentCurrent="component"
             :classeTexto="'subtitle'"
             :temLogo="true"
             :temCronometro="true"
-            :cor="'red'"
           ></sig-card-informacao>
           <sig-card-informacao
             v-else
-            :titulo="'Nº Chamado: 53717'"
             :subtitulos="subtitulos"
             :componentCurrent="component"
             :classeTexto="'subtitle'"
             :temLogo="true"
             :temCronometro="true"
-            :cor="'orange'"
           ></sig-card-informacao>
         </v-col>
       </v-row>
@@ -134,6 +128,7 @@ export default {
       bottom: true
     },
     subtitulos: [
+      "Nº Chamado: 53717",
       "Cliente: Cecil",
       "Autor: Kaique Albuquerque",
       "Data: 14/01/2020",

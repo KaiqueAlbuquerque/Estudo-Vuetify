@@ -1,23 +1,14 @@
 <template>
-    <v-card
-      class="pa-5"
-      centered
-      outlined
-      :color="cor"
-      :shaped="shaped"
-      :height="height"
-      dark
-      v-animate-css.hover="'pulse'"
-    >
-      <v-row v-if="temLogo">
-        <v-col offset-md="6">
-          <v-img
-            height="15"
-            width="100"
-            :src="require('../../assets/static/images/aubrick.png')"
-          ></v-img>
-        </v-col>
-      </v-row>
+  <v-card centered outlined :color="cor" :shaped="shaped" :height="height" dark>
+    <v-card-text>
+      <v-img
+        v-if="temLogo"
+        height="15"
+        width="100"
+        src="/static/images/aubrick.png"
+        class="img-card"
+      ></v-img>
+
       <component
         v-bind:is="current"
         :titulo="titulo"
@@ -29,12 +20,8 @@
         :dadosGraficoPizza="dadosGraficoPizza"
         :dadosGraficoBarra="dadosGraficoBarra"
       ></component>
-      <v-layout
-        v-if="temCronometro == true"
-        align-end
-        justify-end
-        style="margin-top:15px;"
-      >
+
+      <div v-if="temCronometro == true" class="mt-2 text-right">
         <sig-cronometro
           starttime="Jan 31, 2020 15:55:25"
           endtime="Feb 04, 2020 20:50:45"
@@ -51,8 +38,9 @@
                 }
             }'
         ></sig-cronometro>
-      </v-layout>
-    </v-card>
+      </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -89,3 +77,8 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.img-card {
+  margin: 5px auto;
+}
+</style>

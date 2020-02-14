@@ -9,7 +9,7 @@
       <sig-menu :menus="menus"></sig-menu>
     </v-navigation-drawer>
 
-    <v-app-bar :color="cor" dark app clipped-left>
+    <v-app-bar color="primary" app clipped-left dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>SIG</v-toolbar-title>
 
@@ -26,7 +26,7 @@
       </transition>
     </v-content>
 
-    <v-footer :color="cor" dark app absolute inset>
+    <v-footer app absolute inset color="primary" dark>
       <span>&copy; LWM 2020</span>
     </v-footer>
   </v-app>
@@ -132,6 +132,12 @@ export default {
             text: "Nova venda",
             children: [],
             name: ""
+          },
+          {
+            icon: "calendar_today",
+            text: "Agendamentos",
+            children: [],
+            name: "/vendas/agendamentos"
           }
         ]
       }

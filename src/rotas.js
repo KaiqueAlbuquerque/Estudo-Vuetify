@@ -4,6 +4,8 @@ import DashboardChamado from '../views/chamados/DashboardChamado.vue';
 import Centros from '../views/financeiro/Centros.vue';
 import DashboardFinanceiro from '../views/financeiro/DashboardFinanceiro.vue';
 
+import Agendamentos from '../views/vendas/Agendamentos.vue';
+
 export const rotas = [
     { path: '/chamados/home', name: 'homeChamados', component: HomeChamados },
     { path: '/chamados/novo', name: 'novoChamado', component: HomeChamados },
@@ -11,6 +13,8 @@ export const rotas = [
 
     { path: '/financeiro/centros', name: 'centros', component: Centros },
     { path: '/financeiro/dashboard', name: 'dashboardFinanceiro', component: DashboardFinanceiro },
+
+    { path: '/vendas/agendamentos', name: 'agendamentos', component: Agendamentos },
 
     //Pagina default
     { path: '*', component: DashboardChamado }

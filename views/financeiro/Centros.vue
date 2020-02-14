@@ -41,67 +41,29 @@
               class="title grey--text text--lighten-1 font-weight-light"
               style="align-self: center;"
             ></div>
-            <v-form>
+            <v-form v-else>
               <v-container>
                 <v-row>
-                  <v-col cols="12" sm="6">
-                    <v-text-field
-                      value="John Doe"
-                      label="Regular"
-                    ></v-text-field>
-                  </v-col>
-
-                  <v-col cols="12" sm="6">
-                    <v-text-field
-                      value="John Doe"
-                      label="Regular"
-                    ></v-text-field>
-                  </v-col>
-
-                  <v-col cols="12" sm="6">
-                    <v-text-field
-                      value="John Doe"
-                      label="Solo"
-                      solo
-                    ></v-text-field>
-                  </v-col>
-
-                  <v-col cols="12" sm="6">
-                    <v-text-field
-                      value="John Doe"
-                      label="Solo"
-                      solo
-                    ></v-text-field>
-                  </v-col>
-
-                  <v-col cols="12" sm="6">
-                    <v-text-field
-                      value="John Doe"
-                      label="Filled"
-                      filled
-                    ></v-text-field>
-                  </v-col>
-
-                  <v-col cols="12" sm="6">
-                    <v-text-field
-                      value="John Doe"
-                      label="Filled"
-                      filled
-                    ></v-text-field>
-                  </v-col>
-
-                  <v-col cols="12" sm="6">
-                    <v-text-field
-                      value="John Doe"
-                      label="Outlined"
+                  <v-col class="d-flex" cols="6" sm="6">
+                    <v-select
+                      :items="itemsTipoCentro"
+                      label="Tipo do centro"
                       outlined
-                    ></v-text-field>
+                    ></v-select>
                   </v-col>
 
-                  <v-col cols="12" sm="6">
+                  <v-col class="d-flex" cols="12" sm="6">
+                    <v-select
+                      :items="itemsSelect"
+                      label="Pai"
+                      outlined
+                    ></v-select>
+                  </v-col>
+
+                  <v-col cols="12" sm="12">
                     <v-text-field
-                      value="John Doe"
-                      label="Outlined"
+                      value=""
+                      label="Nome Centro"
                       outlined
                     ></v-text-field>
                   </v-col>
@@ -136,6 +98,47 @@
             </template>
           </v-treeview>
         </v-col>
+
+        <v-divider vertical></v-divider>
+
+        <v-col class="d-flex text-center">
+          <v-scroll-y-transition mode="out-in">
+            <div
+              v-if="!selected"
+              class="title grey--text text--lighten-1 font-weight-light"
+              style="align-self: center;"
+            ></div>
+            <v-form v-else>
+              <v-container>
+                <v-row>
+                  <v-col class="d-flex" cols="6" sm="6">
+                    <v-select
+                      :items="itemsTipoCentro"
+                      label="Tipo do centro"
+                      outlined
+                    ></v-select>
+                  </v-col>
+
+                  <v-col class="d-flex" cols="12" sm="6">
+                    <v-select
+                      :items="itemsSelect"
+                      label="Pai"
+                      outlined
+                    ></v-select>
+                  </v-col>
+
+                  <v-col cols="12" sm="12">
+                    <v-text-field
+                      value=""
+                      label="Nome Centro"
+                      outlined
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
+          </v-scroll-y-transition>
+        </v-col>
       </v-row>
     </v-container>
 
@@ -162,9 +165,12 @@
         <v-list-item
           v-for="menuItem in menuItems"
           :key="menuItem"
-          @click="clickAction(menuItem)"
+          @click="clickAction(menuItem.name)"
         >
-          <v-list-item-content>{{ menuItem }}</v-list-item-content>
+          <v-icon>{{ menuItem.icon }}</v-icon>
+          <v-list-item-content style="margin-left: 10px;">{{
+            menuItem.name
+          }}</v-list-item-content>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -174,9 +180,11 @@
 <script>
 export default {
   data: () => ({
-    selected: true,
+    selected: false,
     atual: "",
     bottomNav: 0,
+    itemsSelect: ["Foo", "Bar", "Fizz", "Buzz"],
+    itemsTipoCentro: ["Custo", "Lucro"],
     open: ["public"],
     tree: [],
     items: [
@@ -257,12 +265,22 @@ export default {
     showMenu: false,
     x: 0,
     y: 0,
-    menuItems: ["Adicionar Filho", "Adicionar Irmão"]
+    menuItems: [
+      {
+        name: "Editar",
+        icon: "create"
+      },
+      {
+        name: "Adicionar",
+        icon: "add"
+      }
+    ]
   }),
   methods: {
     clickAction(e) {
       alert(e);
       alert(this.atual);
+      this.selected = true;
     },
     show(e) {
       this.atual = e.target.id;

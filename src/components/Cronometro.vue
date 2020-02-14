@@ -1,19 +1,13 @@
 <template>
-  <div>
-    <div>
-      <div class="hour">
-        <span class="number">Expira em: </span>
-        <span :class="classePisca">{{ hours }}h{{ minutes }}m{{ seconds }}s</span
-        >
-      </div>
-    </div>
+  <div class="hour">
+    <span class="number">Expira em: </span>
+    <span :class="classePisca">{{ hours }}h{{ minutes }}m{{ seconds }}s</span>
   </div>
 </template>
 
 <script>
 import { store } from "../vuex";
 import { mapGetters } from "vuex";
-
 
 export default {
   props: ["starttime", "endtime", "trans"],
@@ -34,11 +28,10 @@ export default {
       this.timerCount(this.start, this.end);
     }, 1000);
 
-    if(this.hours == "00" && this.minutes == "00" && this.seconds == "00"){
-      store.commit('changeClassePiscaTrue');
-    }
-    else{
-      store.commit('changeClassePiscaFalse');
+    if (this.hours == "00" && this.minutes == "00" && this.seconds == "00") {
+      store.commit("changeClassePiscaTrue");
+    } else {
+      store.commit("changeClassePiscaFalse");
     }
   },
 
@@ -70,18 +63,17 @@ export default {
       this.seconds = Math.floor((dist % (1000 * 60)) / 1000);
       this.seconds = this.seconds < 10 ? "0" + this.seconds : this.seconds;
 
-      if(this.hours == "00" && this.minutes == "00" && this.seconds == "00"){
-        store.commit('changeClassePiscaTrue');
-      }
-      else{
-        store.commit('changeClassePiscaFalse');
+      if (this.hours == "00" && this.minutes == "00" && this.seconds == "00") {
+        store.commit("changeClassePiscaTrue");
+      } else {
+        store.commit("changeClassePiscaFalse");
       }
     }
   },
 
   computed: {
     ...mapGetters(["classePisca"])
-  },
+  }
 };
 </script>
 
@@ -90,6 +82,7 @@ export default {
   display: inline-block;
   font-weight: 500;
   text-align: center;
+  color: var(--v-accent-lighten5);
 }
 .format {
   font-weight: 300;
@@ -98,15 +91,21 @@ export default {
   width: 60px;
 }
 @keyframes fa-blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 .fa-blink {
-  -webkit-animation: fa-blink 1.0s linear infinite;
-  -moz-animation: fa-blink 1.0s linear infinite;
-  -ms-animation: fa-blink 1.0s linear infinite;
-  -o-animation: fa-blink 1.0s linear infinite;
-  animation: fa-blink 1.0s linear infinite;
+  -webkit-animation: fa-blink 1s linear infinite;
+  -moz-animation: fa-blink 1s linear infinite;
+  -ms-animation: fa-blink 1s linear infinite;
+  -o-animation: fa-blink 1s linear infinite;
+  animation: fa-blink 1s linear infinite;
 }
 </style>

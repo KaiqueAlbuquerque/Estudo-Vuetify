@@ -1,8 +1,6 @@
 <template>
   <div>
-    <v-list-item-title :class="classeTexto" class="mb-1">{{
-      titulo
-    }}</v-list-item-title>
+    <v-list-item-title :class="classeTexto">{{ titulo }}</v-list-item-title>
     <canvas
       style="margin-top:25px;max-width:100%;"
       :id="dadosGraficoLinha.id"
