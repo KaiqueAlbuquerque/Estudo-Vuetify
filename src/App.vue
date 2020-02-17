@@ -26,7 +26,7 @@
       </transition>
     </v-content>
 
-    <v-footer app absolute inset color="primary" dark>
+    <v-footer app absolute inset>
       <span>&copy; LWM 2020</span>
     </v-footer>
   </v-app>

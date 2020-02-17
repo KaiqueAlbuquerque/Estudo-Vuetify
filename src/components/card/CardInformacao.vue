@@ -1,5 +1,5 @@
 <template>
-  <v-card centered outlined :color="cor" :shaped="shaped" :height="height" dark>
+  <v-card :color="cor" :shaped="shaped" :height="height" hover>
     <v-card-text>
       <v-img
         v-if="temLogo"
@@ -9,8 +9,12 @@
         class="img-card"
       ></v-img>
 
+      <div class="mt-2 text-center" v-if="icone">
+        <v-icon color="yellow darken-2" x-large>{{ icone }}</v-icon>
+      </div>
+
       <component
-        v-bind:is="current"
+        :is="current"
         :titulo="titulo"
         :subtitulos="subtitulos"
         :icone="icone"
@@ -24,7 +28,7 @@
       <div v-if="temCronometro == true" class="mt-2 text-right">
         <sig-cronometro
           starttime="Jan 31, 2020 15:55:25"
-          endtime="Feb 04, 2020 20:50:45"
+          endtime="Feb 17, 2020 20:50:45"
           trans='
               {  
                 "day":"Dias",

@@ -76,7 +76,7 @@ export default new Vuetify({
         primary: colors.blue.darken3
       },
       dark: {
-        primary: colors.lightGreen.darken2
+        primary: colors.orange.darken1
       }
     },
     options: {

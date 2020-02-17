@@ -3,24 +3,24 @@
     <v-container class="fill-height">
       <div class="parent">
         <sig-card-informacao
-          :titulo="'A Receber'"
+          :titulo="'Contas a Receber'"
           :subtitulos="subtitulo1"
           :componentCurrent="component"
-          :classeTexto="'display-1'"
+          :classeTexto="'title'"
           class="div1"
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :titulo="'Recebido'"
+          :titulo="'Contas Recebidas'"
           :subtitulos="subtitulo3"
           :componentCurrent="component"
-          :classeTexto="'display-1'"
+          :classeTexto="'title'"
           class="div2"
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :titulo="'Finalizados'"
-          :classeTexto="'display-1'"
+          :titulo="'Contas a Receber'"
+          :classeTexto="'title'"
           :componentCurrent="component1"
           class="div3"
           :dadosGraficoLinha="dadosGraficoLinha"
@@ -28,28 +28,76 @@
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :titulo="'A Pagar'"
+          :titulo="'Contas a Pagar'"
           :subtitulos="subtitulo2"
           :componentCurrent="component"
-          :classeTexto="'display-1'"
+          :classeTexto="'title'"
           class="div4"
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :titulo="'Pago'"
+          :titulo="'Contas a Pagar'"
           :subtitulos="subtitulo3"
           :componentCurrent="component"
-          :classeTexto="'display-1'"
+          :classeTexto="'title'"
           class="div5"
         ></sig-card-informacao>
 
         <sig-card-informacao
-          :titulo="'Produtos'"
-          :classeTexto="'display-1'"
+          :titulo="'Contas a Pagar'"
+          :classeTexto="'title'"
           :componentCurrent="component3"
           class="div6"
           :dadosGraficoBarra="dadosGraficoBarra"
           :shaped="true"
+        ></sig-card-informacao>
+
+        <sig-card-informacao
+          :titulo="'Falta Receber'"
+          :subtitulos="subtitulo2"
+          :componentCurrent="component"
+          :classeTexto="'title'"
+          class="div7"
+        ></sig-card-informacao>
+
+        <sig-card-informacao
+          :titulo="'Falta Pagar'"
+          :subtitulos="subtitulo3"
+          :componentCurrent="component"
+          :classeTexto="'title'"
+          class="div8"
+        ></sig-card-informacao>
+
+        <sig-card-informacao
+          :titulo="'Vencido à pagar'"
+          :subtitulos="subtitulo2"
+          :componentCurrent="component"
+          :classeTexto="'title'"
+          class="div9"
+        ></sig-card-informacao>
+
+        <sig-card-informacao
+          :titulo="'Vencido à receber'"
+          :subtitulos="subtitulo3"
+          :componentCurrent="component"
+          :classeTexto="'title'"
+          class="div10"
+        ></sig-card-informacao>
+
+        <sig-card-informacao
+          :titulo="'Saldo Vencimentos'"
+          :subtitulos="subtitulo2"
+          :componentCurrent="component"
+          :classeTexto="'title'"
+          class="div11"
+        ></sig-card-informacao>
+
+        <sig-card-informacao
+          :titulo="'Lucro Líquido'"
+          :subtitulos="subtitulo3"
+          :componentCurrent="component"
+          :classeTexto="'title'"
+          class="div12"
         ></sig-card-informacao>
       </div>
     </v-container>
@@ -79,7 +127,7 @@ export default {
     subtitulo3: [{ increment: true, value: "600", moeda: true }],
     dadosGraficoLinha: {
       id: "graficoLinhaDashFinanceiro",
-      height: "100"
+      height: "140"
     },
     dadosGraficoPizza: {
       id: "graficoPizzaDashFinanceiro",
@@ -87,7 +135,7 @@ export default {
     },
     dadosGraficoBarra: {
       id: "graficoBarraDashFinanceiro",
-      height: "100"
+      height: "140"
     }
   })
 };
@@ -97,27 +145,45 @@ export default {
 .parent {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 }
 
 .div1 {
-  grid-area: 1 / 1 / 2 / 2;
-}
-.div2 {
   grid-area: 2 / 1 / 3 / 2;
 }
-.div3 {
-  grid-area: 1 / 2 / 3 / 5;
-}
-.div4 {
+.div2 {
   grid-area: 3 / 1 / 4 / 2;
 }
+.div3 {
+  grid-area: 2 / 2 / 5 / 5;
+}
+.div4 {
+  grid-area: 5 / 1 / 6 / 2;
+}
 .div5 {
-  grid-area: 4 / 1 / 5 / 2;
+  grid-area: 6 / 1 / 7 / 2;
 }
 .div6 {
-  grid-area: 3 / 2 / 5 / 5;
+  grid-area: 5 / 2 / 8 / 5;
+}
+.div7 {
+  grid-area: 4 / 1 / 5 / 2;
+}
+.div8 {
+  grid-area: 7 / 1 / 8 / 2;
+}
+.div9 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.div10 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.div11 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.div12 {
+  grid-area: 1 / 4 / 2 / 5;
 }
 </style>

@@ -2,44 +2,46 @@
   <div>
     <v-container class="fill-height">
       <v-row>
-        <v-col md="4">
+        <v-col md="3">
           <sig-card-informacao
-            :cor="'indigo'"
             :titulo="'Novos Chamados'"
             :subtitulos="subtitulo1"
-            :icone="'mdi-plus'"
             :componentCurrent="component"
-            :shaped="true"
-            :classeTexto="'display-1'"
+            :classeTexto="'subtitle-1'"
+            :icone="'fiber_new'"
           ></sig-card-informacao>
         </v-col>
-        <v-col md="4">
+        <v-col md="3">
           <sig-card-informacao
-            :cor="'green'"
+            :titulo="'Aguardando Atendimento'"
+            :subtitulos="subtitulo3"
+            :componentCurrent="component"
+            :classeTexto="'subtitle-1'"
+            :icone="'timer'"
+          ></sig-card-informacao>
+        </v-col>
+        <v-col md="3">
+          <sig-card-informacao
             :titulo="'Em Atendimento'"
             :subtitulos="subtitulo2"
-            :icone="'mdi-ticket'"
             :componentCurrent="component"
-            :shaped="true"
-            :classeTexto="'display-1'"
+            :classeTexto="'subtitle-1'"
+            :icone="'tag_faces'"
           ></sig-card-informacao>
         </v-col>
-        <v-col md="4">
+        <v-col md="3">
           <sig-card-informacao
-            :cor="'red'"
             :titulo="'Chamados Finalizados'"
             :subtitulos="subtitulo3"
-            :icone="'mdi-check-all'"
             :componentCurrent="component"
-            :shaped="true"
-            :classeTexto="'display-1'"
+            :classeTexto="'subtitle-1'"
+            :icone="'mdi-check-all'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="12">
           <sig-card-informacao
-            :titulo="'Finalizados'"
-            :classeTexto="'display-1'"
-            :cor="'red'"
+            :titulo="'Clientes'"
+            :classeTexto="'title'"
             :componentCurrent="component1"
             :dadosGraficoLinha="dadosGraficoLinha"
           ></sig-card-informacao>
@@ -47,8 +49,7 @@
         <v-col md="6">
           <sig-card-informacao
             :titulo="'Clientes'"
-            :classeTexto="'display-1'"
-            :cor="'indigo'"
+            :classeTexto="'title'"
             :componentCurrent="component2"
             :dadosGraficoPizza="dadosGraficoPizza"
           ></sig-card-informacao>
@@ -56,8 +57,7 @@
         <v-col md="6">
           <sig-card-informacao
             :titulo="'Produtos'"
-            :classeTexto="'display-1'"
-            :cor="'green'"
+            :classeTexto="'title'"
             :componentCurrent="component3"
             :dadosGraficoBarra="dadosGraficoBarra"
           ></sig-card-informacao>
@@ -90,7 +90,7 @@ export default {
     subtitulo3: [{ increment: true, value: "600", moeda: false }],
     dadosGraficoLinha: {
       id: "graficoLinhaDashChamado",
-      height: "50"
+      height: "65"
     },
     dadosGraficoPizza: {
       id: "graficoPizzaDashChamado"
