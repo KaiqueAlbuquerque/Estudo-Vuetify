@@ -1,7 +1,9 @@
 <template>
   <div class="hour">
     <span class="number">Expira em: </span>
-    <span :class="classePisca">{{ hours }}h{{ minutes }}m{{ seconds }}s</span>
+    <span class="number" :class="classePisca"
+      >{{ hours }}h{{ minutes }}m{{ seconds }}s</span
+    >
   </div>
 </template>
 
@@ -83,7 +85,7 @@ export default {
   font-weight: 500;
   text-align: center;
 }
-.format {
+.number {
   font-weight: 300;
   font-size: 14px;
   opacity: 0.8;

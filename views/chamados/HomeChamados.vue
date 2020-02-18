@@ -43,6 +43,7 @@
         </v-col>
         <v-col md="3" v-else v-for="dessert in desserts" :key="dessert.name">
           <sig-card-informacao
+            v-if="dessert.prioridade == 'Alta'"
             :titulo="titulo"
             :subtitulos="subtitulos"
             :componentCurrent="component"
@@ -50,6 +51,35 @@
             :temLogo="true"
             :temCronometro="true"
             :classCard="'pa-4'"
+            :styleCard="
+              'border-left-style:solid; border-left-color:rgb(244,67,54)'
+            "
+          ></sig-card-informacao>
+          <sig-card-informacao
+            v-if="dessert.prioridade == 'Media'"
+            :titulo="titulo"
+            :subtitulos="subtitulos"
+            :componentCurrent="component"
+            :classeTexto="'subtitle-2'"
+            :temLogo="true"
+            :temCronometro="true"
+            :classCard="'pa-4'"
+            :styleCard="
+              'border-left-style:solid; border-left-color:rgb(242, 203, 29)'
+            "
+          ></sig-card-informacao>
+          <sig-card-informacao
+            v-if="dessert.prioridade == 'Baixa'"
+            :titulo="titulo"
+            :subtitulos="subtitulos"
+            :componentCurrent="component"
+            :classeTexto="'subtitle-2'"
+            :temLogo="true"
+            :temCronometro="true"
+            :classCard="'pa-4'"
+            :styleCard="
+              'border-left-style:solid; border-left-color:rgb(25,118,210)'
+            "
           ></sig-card-informacao>
         </v-col>
       </v-row>
@@ -173,70 +203,80 @@ export default {
           calories: 159,
           fat: 6.0,
           carbs: 24,
-          protein: 4.0
+          protein: 4.0,
+          prioridade: "Alta"
         },
         {
           name: "Ice cream sandwich",
           calories: 237,
           fat: 9.0,
           carbs: 37,
-          protein: 4.3
+          protein: 4.3,
+          prioridade: "Alta"
         },
         {
           name: "Eclair",
           calories: 262,
           fat: 16.0,
           carbs: 23,
-          protein: 6.0
+          protein: 6.0,
+          prioridade: "Media"
         },
         {
           name: "Cupcake",
           calories: 305,
           fat: 3.7,
           carbs: 67,
-          protein: 4.3
+          protein: 4.3,
+          prioridade: "Baixa"
         },
         {
           name: "Gingerbread",
           calories: 356,
           fat: 16.0,
           carbs: 49,
-          protein: 3.9
+          protein: 3.9,
+          prioridade: "Baixa"
         },
         {
           name: "Jelly bean",
           calories: 375,
           fat: 0.0,
           carbs: 94,
-          protein: 0.0
+          protein: 0.0,
+          prioridade: "Baixa"
         },
         {
           name: "Lollipop",
           calories: 392,
           fat: 0.2,
           carbs: 98,
-          protein: 0
+          protein: 0,
+          prioridade: "Alta"
         },
         {
           name: "Honeycomb",
           calories: 408,
           fat: 3.2,
           carbs: 87,
-          protein: 6.5
+          protein: 6.5,
+          prioridade: "Media"
         },
         {
           name: "Donut",
           calories: 452,
           fat: 25.0,
           carbs: 51,
-          protein: 4.9
+          protein: 4.9,
+          prioridade: "Baixa"
         },
         {
           name: "KitKat",
           calories: 518,
           fat: 26.0,
           carbs: 65,
-          protein: 7
+          protein: 7,
+          prioridade: "Alta"
         }
       ];
     },

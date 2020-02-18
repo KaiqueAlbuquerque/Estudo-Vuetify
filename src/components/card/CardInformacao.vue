@@ -1,5 +1,12 @@
 <template>
-  <v-card :color="cor" :shaped="shaped" :height="height" hover :class="classCard">
+  <v-card
+    :color="cor"
+    :shaped="shaped"
+    :height="height"
+    hover
+    :class="classCard"
+    :style="styleCard"
+  >
     <div class="mt-2 text-center" v-if="icone">
       <v-icon color="yellow darken-2" x-large>{{ icone }}</v-icon>
     </div>
@@ -67,8 +74,9 @@ export default {
     "height",
     "dadosGraficoLinha",
     "dadosGraficoPizza",
-    "dadosGraficoBarra", 
-    "classCard"
+    "dadosGraficoBarra",
+    "classCard",
+    "styleCard"
   ],
 
   data: () => ({

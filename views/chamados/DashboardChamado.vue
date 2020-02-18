@@ -10,6 +10,9 @@
             :classeTexto="'subtitle-1'"
             :icone="'fiber_new'"
             :classCard="'pa-1'"
+            :styleCard="
+              'border-left-style:solid; border-left-color:rgb(242, 203, 29)'
+            "
           ></sig-card-informacao>
         </v-col>
         <v-col md="3">
@@ -20,6 +23,9 @@
             :classeTexto="'subtitle-1'"
             :icone="'timer'"
             :classCard="'pa-1'"
+            :styleCard="
+              'border-left-style:solid; border-left-color:rgb(242, 203, 29)'
+            "
           ></sig-card-informacao>
         </v-col>
         <v-col md="3">
@@ -30,6 +36,9 @@
             :classeTexto="'subtitle-1'"
             :icone="'tag_faces'"
             :classCard="'pa-1'"
+            :styleCard="
+              'border-left-style:solid; border-left-color:rgb(242, 203, 29)'
+            "
           ></sig-card-informacao>
         </v-col>
         <v-col md="3">
@@ -40,6 +49,9 @@
             :classeTexto="'subtitle-1'"
             :icone="'mdi-check-all'"
             :classCard="'pa-1'"
+            :styleCard="
+              'border-left-style:solid; border-left-color:rgb(242, 203, 29)'
+            "
           ></sig-card-informacao>
         </v-col>
         <v-col md="12">
