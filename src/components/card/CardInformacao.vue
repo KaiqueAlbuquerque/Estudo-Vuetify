@@ -1,35 +1,34 @@
 <template>
-  <v-card :color="cor" :shaped="shaped" :height="height" hover>
-    <v-card-text>
-      <v-img
-        v-if="temLogo"
-        height="15"
-        width="100"
-        src="/static/images/aubrick.png"
-        class="img-card"
-      ></v-img>
+  <v-card :color="cor" :shaped="shaped" :height="height" hover :class="classCard">
+    <div class="mt-2 text-center" v-if="icone">
+      <v-icon color="yellow darken-2" x-large>{{ icone }}</v-icon>
+    </div>
 
-      <div class="mt-2 text-center" v-if="icone">
-        <v-icon color="yellow darken-2" x-large>{{ icone }}</v-icon>
-      </div>
+    <v-img
+      v-if="temLogo"
+      height="15"
+      width="100"
+      src="/static/images/aubrick.png"
+      class="img-card"
+    ></v-img>
 
-      <component
-        :is="current"
-        :titulo="titulo"
-        :subtitulos="subtitulos"
-        :icone="icone"
-        :classeTexto="classeTexto"
-        :classeSubtitulo="classeSubtitulo"
-        :dadosGraficoLinha="dadosGraficoLinha"
-        :dadosGraficoPizza="dadosGraficoPizza"
-        :dadosGraficoBarra="dadosGraficoBarra"
-      ></component>
+    <component
+      :is="current"
+      :titulo="titulo"
+      :subtitulos="subtitulos"
+      :icone="icone"
+      :classeTexto="classeTexto"
+      :classeSubtitulo="classeSubtitulo"
+      :dadosGraficoLinha="dadosGraficoLinha"
+      :dadosGraficoPizza="dadosGraficoPizza"
+      :dadosGraficoBarra="dadosGraficoBarra"
+    ></component>
 
-      <div v-if="temCronometro == true" class="mt-2 text-right">
-        <sig-cronometro
-          starttime="Jan 31, 2020 15:55:25"
-          endtime="Feb 17, 2020 20:50:45"
-          trans='
+    <div v-if="temCronometro == true" class="mt-2 text-right">
+      <sig-cronometro
+        starttime="Jan 31, 2020 15:55:25"
+        endtime="Feb 17, 2020 20:50:45"
+        trans='
               {  
                 "day":"Dias",
                 "hours":"Horas",
@@ -41,9 +40,8 @@
                     "upcoming":""
                 }
             }'
-        ></sig-cronometro>
-      </div>
-    </v-card-text>
+      ></sig-cronometro>
+    </div>
   </v-card>
 </template>
 
@@ -69,7 +67,8 @@ export default {
     "height",
     "dadosGraficoLinha",
     "dadosGraficoPizza",
-    "dadosGraficoBarra"
+    "dadosGraficoBarra", 
+    "classCard"
   ],
 
   data: () => ({

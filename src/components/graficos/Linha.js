@@ -53,12 +53,12 @@ export default class Linha {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            fontColor: 'white'
+                            fontColor: 'black'
                         },
                         scaleLabel: {
                             display: true,
                             labelString: this._tituloY,
-                            fontColor: 'white'
+                            fontColor: 'black'
                         },
                         gridLines: {
                             drawBorder: this._retaEixoY,
@@ -70,13 +70,13 @@ export default class Linha {
                             scaleLabel: {
                                 display: true,
                                 labelString: this._tituloX,
-                                fontColor: 'white'
+                                fontColor: 'black'
                             },
                             gridLines: {
                                 display: this._linhasFundo
                             },
                             ticks: {
-                                fontColor: 'white'
+                                fontColor: 'black'
                             },
                         }
                     ]

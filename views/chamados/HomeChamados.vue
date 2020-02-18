@@ -49,6 +49,7 @@
             :classeTexto="'subtitle-2'"
             :temLogo="true"
             :temCronometro="true"
+            :classCard="'pa-4'"
           ></sig-card-informacao>
         </v-col>
       </v-row>
@@ -59,7 +60,7 @@
           large
           fab
           dark
-          color="indigo"
+          color="primary"
           @click="fullDialog = true"
         >
           <v-icon dark>mdi-plus</v-icon>

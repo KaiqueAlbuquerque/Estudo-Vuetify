@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="indigo" flat dense class="cabecalho">
+    <v-toolbar color="indigo" flat dense class="cabecalho" dark>
       <sig-botaoTooltip
         :posicao="posicao"
         :click="toggleDrawerRight"

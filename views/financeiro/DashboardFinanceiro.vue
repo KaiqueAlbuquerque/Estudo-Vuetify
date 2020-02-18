@@ -8,6 +8,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div1"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -16,6 +17,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div2"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -25,6 +27,7 @@
           class="div3"
           :dadosGraficoLinha="dadosGraficoLinha"
           :shaped="true"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -33,6 +36,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div4"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -41,6 +45,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div5"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -50,6 +55,7 @@
           class="div6"
           :dadosGraficoBarra="dadosGraficoBarra"
           :shaped="true"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -58,6 +64,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div7"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -66,6 +73,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div8"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -74,6 +82,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div9"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -82,6 +91,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div10"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -90,6 +100,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div11"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
 
         <sig-card-informacao
@@ -98,6 +109,7 @@
           :componentCurrent="component"
           :classeTexto="'title'"
           class="div12"
+          :classCard="'pa-3'"
         ></sig-card-informacao>
       </div>
     </v-container>

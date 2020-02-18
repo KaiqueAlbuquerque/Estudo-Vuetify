@@ -22,7 +22,7 @@ export default class Pizza {
                 legend: {
                     display: true,
                     labels: {
-                        fontColor: "white"
+                        fontColor: "black"
                     }
                 },
             }

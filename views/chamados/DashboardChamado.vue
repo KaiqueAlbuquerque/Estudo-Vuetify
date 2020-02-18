@@ -9,6 +9,7 @@
             :componentCurrent="component"
             :classeTexto="'subtitle-1'"
             :icone="'fiber_new'"
+            :classCard="'pa-1'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="3">
@@ -18,6 +19,7 @@
             :componentCurrent="component"
             :classeTexto="'subtitle-1'"
             :icone="'timer'"
+            :classCard="'pa-1'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="3">
@@ -27,6 +29,7 @@
             :componentCurrent="component"
             :classeTexto="'subtitle-1'"
             :icone="'tag_faces'"
+            :classCard="'pa-1'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="3">
@@ -36,6 +39,7 @@
             :componentCurrent="component"
             :classeTexto="'subtitle-1'"
             :icone="'mdi-check-all'"
+            :classCard="'pa-1'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="12">
@@ -44,6 +48,7 @@
             :classeTexto="'title'"
             :componentCurrent="component1"
             :dadosGraficoLinha="dadosGraficoLinha"
+            :classCard="'pa-3'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="6">
@@ -52,6 +57,7 @@
             :classeTexto="'title'"
             :componentCurrent="component2"
             :dadosGraficoPizza="dadosGraficoPizza"
+            :classCard="'pa-3'"
           ></sig-card-informacao>
         </v-col>
         <v-col md="6">
@@ -60,6 +66,7 @@
             :classeTexto="'title'"
             :componentCurrent="component3"
             :dadosGraficoBarra="dadosGraficoBarra"
+            :classCard="'pa-3'"
           ></sig-card-informacao>
         </v-col>
       </v-row>

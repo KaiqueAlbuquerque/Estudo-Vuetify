@@ -29,19 +29,19 @@ export default class Barra {
         legend: {
           display: false,
           labels: {
-            fontColor: "white"
+            fontColor: "Grey"
           }
         },
         scales: {
           yAxes: [{
             ticks: {
               beginAtZero: true,
-              fontColor: 'white'
+              fontColor: 'black'
             },
             scaleLabel: {
               display: true,
               labelString: this._tituloY,
-              fontColor: 'white'
+              fontColor: 'black'
             },
             gridLines: {
               drawBorder: true,
@@ -53,13 +53,13 @@ export default class Barra {
               scaleLabel: {
                 display: true,
                 labelString: this._tituloX,
-                fontColor: 'white'
+                fontColor: 'black'
               },
               gridLines: {
                 display: this._linhasFundo
               },
               ticks: {
-                fontColor: 'white'
+                fontColor: 'black'
               },
             }
           ]
