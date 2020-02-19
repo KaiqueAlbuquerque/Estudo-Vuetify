@@ -81,13 +81,13 @@ export default {
                 icon: "trending_up",
                 text: "Para receber",
                 children: [],
-                name: ""
+                name: "/financeiro/contasreceber"
               },
               {
                 icon: "trending_down",
                 text: "Para pagar",
                 children: [],
-                name: ""
+                name: "/financeiro/contaspagar"
               }
             ]
           }

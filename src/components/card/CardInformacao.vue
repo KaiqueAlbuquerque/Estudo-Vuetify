@@ -15,7 +15,7 @@
       v-if="temLogo"
       height="15"
       width="100"
-      src="/static/images/aubrick.png"
+      src="/static/images/logo.png"
       class="img-card"
     ></v-img>
 

@@ -3,6 +3,8 @@ import DashboardChamado from '../views/chamados/DashboardChamado.vue';
 
 import Centros from '../views/financeiro/Centros.vue';
 import DashboardFinanceiro from '../views/financeiro/DashboardFinanceiro.vue';
+import ContasReceber from '../views/financeiro/ContasReceber.vue';
+import ContasPagar from '../views/financeiro/ContasPagar.vue';
 
 import Agendamentos from '../views/vendas/Agendamentos.vue';
 
@@ -13,6 +15,8 @@ export const rotas = [
 
     { path: '/financeiro/centros', name: 'centros', component: Centros },
     { path: '/financeiro/dashboard', name: 'dashboardFinanceiro', component: DashboardFinanceiro },
+    { path: '/financeiro/contasreceber', name: 'contasReceber', component: ContasReceber },
+    { path: '/financeiro/contaspagar', name: 'contasPagar', component: ContasPagar},
 
     { path: '/vendas/agendamentos', name: 'agendamentos', component: Agendamentos },
 

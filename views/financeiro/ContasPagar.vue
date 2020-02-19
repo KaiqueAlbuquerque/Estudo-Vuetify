@@ -3,7 +3,7 @@
     <v-card>
       <v-layout align-center justify-space-between>
         <div style="margin-left:10px;">
-          <h1>Chamados</h1>
+          <h1>Contas a Pagar</h1>
         </div>
         <div style="margin-right:20px;">
           <sig-botaoTooltip
@@ -43,42 +43,14 @@
         </v-col>
         <v-col md="3" v-else v-for="dessert in desserts" :key="dessert.name">
           <sig-card-informacao
-            v-if="dessert.prioridade == 'Alta'"
-            :titulo="titulo"
+            :titulo="'Credor: Sabesp'"
             :subtitulos="subtitulos"
             :componentCurrent="component"
             :classeTexto="'subtitle-2'"
             :temLogo="true"
-            :temCronometro="true"
             :classCard="'pa-4'"
             :styleCard="
-              'border-left-style:solid; border-left-width:10px; border-left-color:rgb(244,67,54)'
-            "
-          ></sig-card-informacao>
-          <sig-card-informacao
-            v-if="dessert.prioridade == 'Media'"
-            :titulo="titulo"
-            :subtitulos="subtitulos"
-            :componentCurrent="component"
-            :classeTexto="'subtitle-2'"
-            :temLogo="true"
-            :temCronometro="true"
-            :classCard="'pa-4'"
-            :styleCard="
-              'border-left-style:solid; border-left-width:10px; border-left-color:rgb(242, 203, 29)'
-            "
-          ></sig-card-informacao>
-          <sig-card-informacao
-            v-if="dessert.prioridade == 'Baixa'"
-            :titulo="titulo"
-            :subtitulos="subtitulos"
-            :componentCurrent="component"
-            :classeTexto="'subtitle-2'"
-            :temLogo="true"
-            :temCronometro="true"
-            :classCard="'pa-4'"
-            :styleCard="
-              'border-left-style:solid; border-left-width:10px; border-left-color:rgb(25,118,210)'
+              'border-bottom-style:solid; border-bottom-color:rgb(242, 203, 29)'
             "
           ></sig-card-informacao>
         </v-col>
@@ -97,24 +69,10 @@
         </v-btn>
       </v-layout>
     </v-container>
-
-    <sig-tela-lateral>
-      <sig-interacoes></sig-interacoes>
-    </sig-tela-lateral>
-
-    <sig-novo-chamado
-      v-on:FullDialog="toogleFullDialog"
-      :fullDialog="fullDialog"
-    ></sig-novo-chamado>
-    <sig-nova-interacao></sig-nova-interacao>
   </div>
 </template>
 
 <script>
-import TelaLateral from "../../src/components/TelaLateral";
-import Interacoes from "./Interacoes";
-import NovoChamado from "./NovoChamado";
-import NovaInteracao from "./NovaInteracao";
 import CardInformacao from "../../src/components/card/CardInformacao";
 import TextoCard from "../../src/components/card/TextoCard";
 import BotaoTooltip from "../../src/components/BotaoTooltip";
@@ -123,10 +81,6 @@ import { mapGetters, mapMutations } from "vuex";
 
 export default {
   components: {
-    "sig-tela-lateral": TelaLateral,
-    "sig-interacoes": Interacoes,
-    "sig-novo-chamado": NovoChamado,
-    "sig-nova-interacao": NovaInteracao,
     "sig-card-informacao": CardInformacao,
     "sig-botaoTooltip": BotaoTooltip
   },
@@ -142,15 +96,13 @@ export default {
       top: false,
       bottom: true
     },
-    titulo: "Nº Chamado: 53717",
     subtitulos: [
-      "Cliente: Cecil",
-      "Autor: Kaique Albuquerque",
-      "Data: 14/01/2020",
-      "Prioridade: Alta"
+      "Valor: R$1500,00",
+      "Vencimento: 14/01/2020",
+      "Descrição: Analista Mensal Projeto Enem"
     ],
     component: TextoCard,
-    fullDialog: false,
+
     headers: [
       {
         text: "Dessert (100g serving)",
@@ -184,15 +136,6 @@ export default {
 
   created() {
     this.initialize();
-    if (this.$route.path == "/chamados/novo") {
-      this.fullDialog = true;
-    }
-  },
-
-  watch: {
-    $route(to) {
-      if (to.path == "/chamados/novo") this.fullDialog = true;
-    }
   },
 
   methods: {
@@ -204,7 +147,6 @@ export default {
           fat: 6.0,
           carbs: 24,
           protein: 4.0,
-          prioridade: "Alta"
         },
         {
           name: "Ice cream sandwich",
@@ -212,7 +154,6 @@ export default {
           fat: 9.0,
           carbs: 37,
           protein: 4.3,
-          prioridade: "Alta"
         },
         {
           name: "Eclair",
@@ -220,7 +161,6 @@ export default {
           fat: 16.0,
           carbs: 23,
           protein: 6.0,
-          prioridade: "Media"
         },
         {
           name: "Cupcake",
@@ -228,7 +168,6 @@ export default {
           fat: 3.7,
           carbs: 67,
           protein: 4.3,
-          prioridade: "Baixa"
         },
         {
           name: "Gingerbread",
@@ -236,7 +175,6 @@ export default {
           fat: 16.0,
           carbs: 49,
           protein: 3.9,
-          prioridade: "Baixa"
         },
         {
           name: "Jelly bean",
@@ -244,7 +182,6 @@ export default {
           fat: 0.0,
           carbs: 94,
           protein: 0.0,
-          prioridade: "Baixa"
         },
         {
           name: "Lollipop",
@@ -252,7 +189,6 @@ export default {
           fat: 0.2,
           carbs: 98,
           protein: 0,
-          prioridade: "Alta"
         },
         {
           name: "Honeycomb",
@@ -260,7 +196,6 @@ export default {
           fat: 3.2,
           carbs: 87,
           protein: 6.5,
-          prioridade: "Media"
         },
         {
           name: "Donut",
@@ -268,7 +203,6 @@ export default {
           fat: 25.0,
           carbs: 51,
           protein: 4.9,
-          prioridade: "Baixa"
         },
         {
           name: "KitKat",
@@ -276,34 +210,22 @@ export default {
           fat: 26.0,
           carbs: 65,
           protein: 7,
-          prioridade: "Alta"
         }
       ];
-    },
-
-    ...mapMutations([
-      "toggleDrawerRight",
-      "toggleSheet",
-      "changeListTrue",
-      "changeListFalse"
-    ]),
-
-    toogleFullDialog() {
-      this.fullDialog = false;
-      this.$router.push({ path: "/chamados/home" });
     },
 
     editItem(item) {
       this.editedIndex = this.desserts.indexOf(item);
       this.editedItem = Object.assign({}, item);
-      this.toggleDrawerRight();
     },
 
     deleteItem(item) {
       const index = this.desserts.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.desserts.splice(index, 1);
-    }
+    },
+
+    ...mapMutations(["changeListTrue", "changeListFalse"])
   }
 };
 </script>
