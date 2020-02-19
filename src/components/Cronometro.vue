@@ -2,8 +2,8 @@
   <div class="hour">
     <span class="number">Expira em: </span>
     <span class="number" :class="classePisca"
-      >{{ hours }}h{{ minutes }}m{{ seconds }}s</span
-    >
+      >{{ hours }}h{{ minutes }}m{{ seconds }}s
+    </span>
   </div>
 </template>
 
@@ -88,7 +88,6 @@ export default {
 .number {
   font-weight: 300;
   font-size: 14px;
-  opacity: 0.8;
   width: 60px;
 }
 @keyframes fa-blink {

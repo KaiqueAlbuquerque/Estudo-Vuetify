@@ -54,6 +54,7 @@
             :styleCard="
               'border-left-style:solid; border-left-width:10px; border-left-color:rgb(244,67,54)'
             "
+            :temAcao="true"
           ></sig-card-informacao>
           <sig-card-informacao
             v-if="dessert.prioridade == 'Media'"
@@ -67,6 +68,7 @@
             :styleCard="
               'border-left-style:solid; border-left-width:10px; border-left-color:rgb(242, 203, 29)'
             "
+            :temAcao="true"
           ></sig-card-informacao>
           <sig-card-informacao
             v-if="dessert.prioridade == 'Baixa'"
@@ -80,6 +82,7 @@
             :styleCard="
               'border-left-style:solid; border-left-width:10px; border-left-color:rgb(25,118,210)'
             "
+            :temAcao="true"
           ></sig-card-informacao>
         </v-col>
       </v-row>
